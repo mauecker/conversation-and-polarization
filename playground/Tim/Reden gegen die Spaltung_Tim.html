@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reden gegen die Spaltung</title>
+<style>
+:root{
+  --bg:#E1DFE4;
+  --white:#FFFFFF;
+  --red:#CD0D32;
+  --pink:#DF788D;
+  --grey:#727272;
+  --ink:#262327;
+  --ink-2:#44414a;
+  --muted:#727272;
+  --grid:#cbc8d0;
+  --axis:#b0acb6;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+svg{display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ---------- Fortschritt ---------- */
+.rail{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:50;
+  display:flex;flex-direction:column;gap:9px}
+.rail i{width:7px;height:7px;border-radius:50%;background:var(--axis);transition:.3s}
+.rail i.on{background:var(--red);transform:scale(1.6)}
+@media (max-width:860px){.rail{display:none}}
+
+/* ---------- Titel ---------- */
+.hero{min-height:94vh;display:flex;flex-direction:column;justify-content:center;position:relative}
+.hero .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 20px}
+.hero h1{font-size:clamp(38px,7.2vw,96px);line-height:.98;letter-spacing:-.035em;margin:0 0 26px;max-width:16ch;font-weight:700}
+.hero p{font-size:clamp(17px,2vw,23px);line-height:1.5;color:var(--ink-2);max-width:40ch;margin:0}
+.hero .src{font-size:13px;color:var(--muted);max-width:60ch;margin:40px 0 0;line-height:1.6}
+.scrollcue{position:absolute;left:24px;bottom:28px;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
+.scrollcue span{display:block;width:1px;height:26px;background:var(--grey);animation:cue 2s infinite}
+@keyframes cue{0%,100%{opacity:.2;transform:scaleY(.4);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+/* ---------- Szenen ---------- */
+.scene{position:relative}
+.pin{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;
+  overflow:hidden}
+.frame{position:relative;container-type:inline-size;
+  width:min(100% - 32px, calc((100vh - 48px) * 1200 / 780));
+  aspect-ratio:1200/780}
+.frame > svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+
+/* Textkarten im Bild */
+.cap{position:absolute;left:3.5%;width:32%;top:50%;
+  transform:translateY(calc(-50% + 16px));opacity:0;
+  transition:opacity .22s ease,transform .22s ease;
+  will-change:opacity,transform;pointer-events:none}
+.cap.on{opacity:1;transform:translateY(-50%);
+  transition:opacity .34s ease .2s,transform .34s ease .2s}
+.cap h2{font-size:4.1cqw;line-height:1.08;letter-spacing:-.025em;margin:0 0 .5em;font-weight:700}
+.cap h3{font-size:2.9cqw;line-height:1.14;letter-spacing:-.02em;margin:0 0 .5em;font-weight:700}
+.cap p{font-size:1.85cqw;line-height:1.5;margin:0 0 .6em;color:var(--ink-2)}
+.cap p:last-child{margin-bottom:0}
+.cap p.small{font-size:1.5cqw;color:var(--muted)}
+.cap .big{font-size:9cqw;line-height:.9;letter-spacing:-.045em;font-weight:700;display:block;margin:0 0 .12em}
+.cap .mid{font-size:5.4cqw;line-height:.95;letter-spacing:-.04em;font-weight:700;display:block;margin:0 0 .18em}
+.cap.pink .mid,.cap.pink .big,.cap.pink h3{color:var(--red)}
+.cap.red .mid,.cap.red .big,.cap.red h3{color:var(--red)}
+
+/* ---------- Schluss ---------- */
+.outro{padding:14vh 0 16vh;border-top:1px solid var(--grid);margin-top:6vh}
+.outro h2{font-size:clamp(26px,3.4vw,42px);letter-spacing:-.02em;margin:0 0 30px;max-width:20ch}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:34px}
+.cols p{font-size:16.5px;line-height:1.6;color:var(--ink-2);margin:0 0 14px;max-width:46ch}
+.srcbox{margin-top:48px;padding-top:24px;border-top:1px solid var(--grid);
+  font-size:13px;line-height:1.7;color:var(--muted);max-width:84ch}
+
+/* ---------- Tabellen ---------- */
+.data{padding:0 0 10vh}
+.data h3{font-size:15px;margin:0 0 4px;letter-spacing:-.01em}
+.data p.hint{font-size:13.5px;color:var(--muted);margin:0 0 16px}
+details{border-top:1px solid var(--grid);padding:16px 0}
+summary{cursor:pointer;font-size:14.5px;color:var(--ink-2);list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+ ";color:var(--muted)}
+details[open] summary::before{content:"− "}
+table{border-collapse:collapse;width:100%;margin-top:14px;font-size:13.5px;
+  font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:6px 8px;border-bottom:1px solid var(--grid)}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted);font-weight:500}
+
+@media (max-width:860px){
+  .frame{width:calc(100% - 24px);aspect-ratio:auto;height:calc(100vh - 32px)}
+  .frame > svg{height:62%;top:0}
+  .cap{left:0!important;right:0!important;top:auto!important;bottom:2%!important;
+    width:auto!important;max-width:none!important;text-align:left!important;
+    transform:translateY(12px)!important}
+  .cap.on{transform:none!important}
+  .cap h2{font-size:28px}.cap h3{font-size:21px}
+  .cap p{font-size:15px}.cap p.small{font-size:13px}
+  .cap .big{font-size:56px}.cap .mid{font-size:38px}
+}
+@media (prefers-reduced-motion:reduce){
+  .cap{transition:none}.scrollcue span{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="rail" id="rail" aria-hidden="true"></div>
+
+<header class="hero"><div class="wrap">
+  <p class="kicker">Deutschland spricht 2018</p>
+  <h1>Reden gegen die Spaltung. Aber mit wem?</h1>
+  <p>Ein Nachmittag mit einem fremden Menschen verändert etwas. Was genau, hängt daran,
+  ob der andere ähnlich denkt. Und das Ergebnis läuft der Intuition zuwider.</p>
+  <p class="src">Nach Fang, X., Heuser, S., &amp; Stötzer, L. S. (2025). How in-person conversations shape
+  political polarization: Quasi-experimental evidence from a nationwide initiative.
+  <em>Journal of Public Economics, 242</em>, 105309. Open Access, CC BY 4.0.</p>
+</div>
+  <div class="scrollcue"><span></span>scrollen</div>
+</header>
+
+<main>
+
+<!-- 1 -->
+<section class="scene" data-sc="1" data-steps="3">
+  <div class="pin"><div class="frame">
+    <svg viewBox="0 0 1200 780" aria-label="Zwei Gruppen: die eine verdichtet sich in sich, zwischen beiden entstehen Verbindungen."></svg>
+    <div class="cap" data-from="0" data-to="1">
+      <h2>Zwei Erwartungen, die sich widersprechen</h2>
+      <p>Gespräche verändern politische Haltungen. Nur sagt die Forschung zwei
+      entgegengesetzte Dinge darüber voraus.</p>
+    </div>
+    <div class="cap pink" data-from="1" data-to="2">
+      <h3>Verdichtung</h3>
+      <p>Unter Gleichgesinnten verstärkt sich, was ohnehin alle teilen. Die Gruppe rückt
+      enger zusammen und weiter von der Mitte weg.</p>
+    </div>
+    <div class="cap red" data-from="2" data-to="3.01">
+      <h3>Verbindung</h3>
+      <p>Über die Lagergrenze hinweg soll Kontakt Vorurteile abbauen, weil aus dem
+      abstrakten Gegner ein konkreter Mensch wird.</p>
+      <p class="small">Welche der beiden Kräfte überwiegt, lässt sich im Alltag nicht messen.
+      Hier ließ es sich.</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- 2 -->
+<section class="scene" data-sc="2" data-steps="3">
+  <div class="pin"><div class="frame">
+    <svg viewBox="0 0 1200 780" aria-label="19.141 Punkte verteilen sich, ordnen sich zu Paaren und färben sich nach politischer Nähe."></svg>
+    <div class="cap" data-from="0" data-to="1">
+      <span class="big" data-count="19141">0</span>
+      <p>Menschen meldeten sich 2018 bei der Aktion <em>Deutschland spricht</em> an und
+      beantworteten sieben politische Ja-Nein-Fragen.</p>
+    </div>
+    <div class="cap" data-from="1" data-to="2">
+      <h3>Je zwei werden verkuppelt</h3>
+      <p>Ein Algorithmus sucht zu jedem den politisch fernsten Partner. Mit einer harten
+      Nebenbedingung: höchstens 20 Kilometer entfernt.</p>
+    </div>
+    <div class="cap red" data-from="2" data-to="3.01">
+      <span class="mid" data-count="46" data-suffix=" %">0 %</span>
+      <p>der Paare bestanden am Ende aus zwei Menschen, die wirklich weit auseinanderlagen.
+      Bei den übrigen 54 Prozent fand sich im Umkreis niemand Passendes.</p>
+      <p class="small">Diese ungewollte Panne macht die Aktion erst auswertbar: Sie liefert
+      zwei Sorten von Gesprächen statt nur einer.</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- 3 -->
+<section class="scene" data-sc="3" data-steps="4">
+  <div class="pin"><div class="frame">
+    <svg viewBox="0 0 1200 780" aria-label="Ein Paar: einer sagt zuerst zu, dann entscheidet der andere über Treffen oder kein Treffen."></svg>
+    <div class="cap" data-from="0" data-to="1">
+      <h3>Woher der Zufall kommt</h3>
+      <p>Wer sich trifft, ist von vornherein anders als wer kneift. Treffen und
+      Nicht-Treffen einfach zu vergleichen, würde also nichts zeigen.</p>
+    </div>
+    <div class="cap pink" data-from="1" data-to="2">
+      <h3>Einer sagt zuerst zu</h3>
+      <p>Beide bekommen eine Mail mit einer kurzen Vorstellung des anderen. Einer der
+      beiden antwortet als Erster.</p>
+    </div>
+    <div class="cap" data-from="2" data-to="3">
+      <h3>Ab hier entscheidet der andere</h3>
+      <p>Kontakt entsteht nur, wenn beide zusagen. Für den, der zuerst zugesagt hat, hängt
+      alles Weitere an einer Entscheidung, die er nicht beeinflussen kann.</p>
+      <p class="small">Ob der Partner zusagte, ließ sich aus keinem seiner Merkmale vorhersagen.
+      Es ging um Terminkollisionen, Vergessen, spätes Zögern.</p>
+    </div>
+    <div class="cap" data-from="3" data-to="4.01">
+      <h3>Vier Gruppen</h3>
+      <p>Die Spalten verdankt man dem Algorithmus, die Zeilen dem Verhalten des Partners.
+      Das ist das Experiment, das niemand geplant hat.</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- 4 -->
+<section class="scene" data-sc="4" data-steps="2">
+  <div class="pin"><div class="frame">
+    <svg viewBox="0 0 1200 780" aria-label="Die Gesprächsdauer wächst auf 141 Minuten, danach die Bewertungen der Treffen."></svg>
+    <div class="cap" data-from="0" data-to="1">
+      <h3>Zwei Stunden, meist freundlich</h3>
+      <p>Am 23. September 2018 trafen sich rund 4.200 Paare, in Cafés, Parks und
+      Wohnungen. Niemand moderierte, kein Thema war vorgegeben.</p>
+    </div>
+    <div class="cap" data-from="1" data-to="2.01">
+      <h3>Ausgewichen ist niemand</h3>
+      <p>Strittige Themen kamen 28 Prozent häufiger zur Sprache als unstrittige, und
+      Treffen mit Andersdenkenden dauerten im Schnitt 15 Minuten länger.</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- 5 -->
+<section class="scene" data-sc="5" data-steps="4">
+  <div class="pin"><div class="frame">
+    <svg viewBox="0 0 1200 780" aria-label="Wirkung auf die politischen Positionen: Gleichgesinnte rücken von der Mitte weg, Andersdenkende nicht."></svg>
+    <div class="cap" data-from="0" data-to="1">
+      <h3>Rücken die Überzeugungen?</h3>
+      <p>Gemessen wird, wie weit die eigene Haltung über elf politische Aussagen hinweg
+      von der Mitte entfernt liegt, eine Woche nach dem Treffen.</p>
+    </div>
+    <div class="cap pink" data-from="1" data-to="2">
+      <h3>Gleichgesinnte spitzen zu</h3>
+      <p>Wer mit jemandem sprach, der ähnlich dachte, vertrat danach deutlichere
+      Positionen. Der Balken endet klar jenseits der Null.</p>
+    </div>
+    <div class="cap red" data-from="2" data-to="3">
+      <h3>Andersdenkende bewegen nichts</h3>
+      <p>Keine Annäherung, kein Trotz. Der Wert liegt bei null, und die Spanne der
+      Unsicherheit umschließt die Null von beiden Seiten.</p>
+    </div>
+    <div class="cap" data-from="3" data-to="4.01">
+      <h3>Das Reden wirkt</h3>
+      <p>In welche Richtung, entscheidet das Gegenüber. Der Unterschied zwischen beiden
+      Gruppen ist belastbar und nicht dem Zufall geschuldet.</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- 6 -->
+<section class="scene" data-sc="6" data-steps="2">
+  <div class="pin"><div class="frame">
+    <svg viewBox="0 0 1200 780" aria-label="Eine Markierung wandert auf einer siebenstufigen Skala von der Mitte nach außen."></svg>
+    <div class="cap" data-from="0" data-to="1">
+      <h3>Und wie viel ist das?</h3>
+      <p>Wer bei einer Aussage einen Punkt neben der Mitte lag, liegt danach einen ganzen
+      Skalenpunkt weiter außen. Aus einer 5 wird eine 6.</p>
+    </div>
+    <div class="cap" data-from="1" data-to="2.01">
+      <h3>Wer weit außen steht, hat weniger Luft</h3>
+      <p>Bei zwei Punkten Vorabstand bewegt sich die Haltung nur noch um etwa zwei Drittel
+      eines Punktes weiter.</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- 7 -->
+<section class="scene" data-sc="7" data-steps="3">
+  <div class="pin"><div class="frame">
+    <svg viewBox="0 0 1200 780" aria-label="Abneigung gegen die andere Seite sinkt nach Gesprächen mit Andersdenkenden, der wahrgenommene Zusammenhalt steigt."></svg>
+    <div class="cap" data-from="0" data-to="1">
+      <h3>Es kommt darauf an, was man misst</h3>
+      <p>Neben den eigenen Positionen wurde erhoben, was man Menschen der anderen Seite
+      zutraut. Nicht dem Gesprächspartner, sondern einem gedachten Fremden.</p>
+    </div>
+    <div class="cap red" data-from="1" data-to="2">
+      <h3>Weniger Abneigung</h3>
+      <p>Der Gedanke, der andere sei zu dumm für komplexe Zusammenhänge und habe
+      grundlegend andere Werte, verlor nach einem Nachmittag deutlich an Kraft.</p>
+    </div>
+    <div class="cap red" data-from="2" data-to="3.01">
+      <h3>Und mehr Zutrauen</h3>
+      <p>Auch die Einschätzung der Gesellschaft insgesamt wurde freundlicher. Mitmenschen
+      galten danach als vertrauenswürdiger und fürsorglicher.</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- 8 -->
+<section class="scene" data-sc="8" data-steps="2">
+  <div class="pin"><div class="frame">
+    <svg viewBox="0 0 1200 780" aria-label="Je angenehmer die Begegnung erlebt wurde, desto stärker sinkt die Abneigung."></svg>
+    <div class="cap" data-from="0" data-to="2.01">
+      <h3>Es hing an der Begegnung</h3>
+      <p>Nicht die politische Diskussion machte den Unterschied, sondern ob man sich
+      sympathisch fand. Schieb die Markierung mit dem Scrollen nach rechts.</p>
+      <p class="small">Zusammenhang, keine Ursache: Wie ein Gespräch läuft, hängt auch von
+      einem selbst ab.</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- 9 -->
+<section class="scene" data-sc="9" data-steps="2">
+  <div class="pin"><div class="frame">
+    <svg viewBox="0 0 1200 780" aria-label="Effektgrößen anderer Studien auf einer gemeinsamen Achse, die eigenen Werte hervorgehoben."></svg>
+    <div class="cap" data-from="0" data-to="1">
+      <h3>Ist ein Nachmittag viel?</h3>
+      <p>Zum Vergleich: Die politische Polarisierung in den USA stieg zwischen 1996 und
+      2016 um etwa 0,38 Standardabweichungen. Vier Wochen ohne Facebook brachten 0,10.</p>
+    </div>
+    <div class="cap" data-from="1" data-to="2.01">
+      <h3>In der Größenordnung dessen, was wirkt</h3>
+      <p>Ein einziges Gespräch liegt dort, wo sonst mehrwöchige Programme landen, und das
+      noch eine Woche danach.</p>
+      <p class="small">Vorbehalt: andere Länder, andere Messinstrumente, andere Zeithorizonte.</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- 10 -->
+<section class="scene" data-sc="10" data-steps="3">
+  <div class="pin"><div class="frame">
+    <svg viewBox="0 0 1200 780" aria-label="Von 19.141 Angemeldeten bleiben 1.523 auswertbare Personen übrig."></svg>
+    <div class="cap" data-from="0" data-to="1">
+      <h3>Für wen gilt das?</h3>
+      <p>Zurück zu den Punkten vom Anfang. Nicht alle davon kommen in der Auswertung an.</p>
+    </div>
+    <div class="cap" data-from="1" data-to="2">
+      <span class="mid" data-count="1523">0</span>
+      <p>Personen bleiben übrig. Rund die Hälfte derer, die die erste Befragung ausfüllten,
+      machte bei der zweiten nicht mehr mit.</p>
+    </div>
+    <div class="cap" data-from="2" data-to="3.01">
+      <h3>Und das sind nicht die Deutschen</h3>
+      <p>67 Prozent mit Hochschulabschluss, 69 Prozent links der Mitte. Wer sich freiwillig
+      mit einem Fremden über Politik verabredet, ist nicht der Durchschnitt.</p>
+    </div>
+  </div></div>
+</section>
+
+</main>
+
+<div class="outro"><div class="wrap">
+  <h2>Was daraus folgt</h2>
+  <div class="cols">
+    <div>
+      <p>Ein einziger Nachmittag verändert politische Überzeugungen nicht. Er verändert,
+      was man einander zutraut. Wer zwei Stunden mit jemandem gesprochen hat, der alles
+      anders sieht, hält diese Menschen danach seltener für dumm oder schlecht informiert.</p>
+      <p>Umgekehrt gilt dasselbe in die unbequeme Richtung. Das Gespräch unter
+      Gleichgesinnten, das sich so angenehm anfühlt, schiebt die eigenen Überzeugungen
+      weiter nach außen.</p>
+    </div>
+    <div>
+      <p>Entscheidend war nicht, wie fruchtbar die politische Diskussion ausfiel, sondern
+      ob die Begegnung angenehm war. Wo sie es nicht war, verschwand der Effekt.</p>
+      <p>Verallgemeinern lässt sich das nur begrenzt. Gemessen wurde eine Woche danach,
+      über längere Fristen sagt die Studie nichts.</p>
+    </div>
+  </div>
+
+  <div class="data">
+    <h3 style="margin-top:46px">Alle Zahlen zum Nachlesen</h3>
+    <p class="hint">Effekte in Standardabweichungen, Standardfehler in Klammern.
+    *** p&lt;0,01, ** p&lt;0,05.</p>
+    <details><summary>Wirkung auf die eigenen politischen Positionen</summary>
+      <table><tr><th>Maß und Gruppe</th><th>Effekt</th><th>SE</th><th>n</th></tr>
+      <tr><td>Absolute Skalenmitte · Gleichgesinnte</td><td>0,161***</td><td>(0,050)</td><td>730</td></tr>
+      <tr><td>Absolute Skalenmitte · Andersdenkende</td><td>0,005</td><td>(0,045)</td><td>710</td></tr>
+      <tr><td>Durchschnittsmeinung · Gleichgesinnte</td><td>0,126**</td><td>(0,053)</td><td>730</td></tr>
+      <tr><td>Durchschnittsmeinung · Andersdenkende</td><td>−0,027</td><td>(0,030)</td><td>710</td></tr>
+      <tr><td>Unterschied beider Gruppen</td><td>−0,109*</td><td>(0,057)</td><td>1439</td></tr></table>
+    </details>
+    <details><summary>Abneigung und wahrgenommener Zusammenhalt</summary>
+      <table><tr><th>Index und Gruppe</th><th>Effekt</th><th>SE</th><th>n</th></tr>
+      <tr><td>Affektive Polarisierung · Gleichgesinnte</td><td>0,063</td><td>(0,080)</td><td>756</td></tr>
+      <tr><td>Affektive Polarisierung · Andersdenkende</td><td>−0,277***</td><td>(0,077)</td><td>736</td></tr>
+      <tr><td>Zusammenhalt · Gleichgesinnte</td><td>0,122</td><td>(0,079)</td><td>766</td></tr>
+      <tr><td>Zusammenhalt · Andersdenkende</td><td>0,201***</td><td>(0,078)</td><td>741</td></tr></table>
+    </details>
+    <details><summary>Stichprobe und Ausfall</summary>
+      <table><tr><th>Stufe</th><th>Personen</th><th>Anteil</th></tr>
+      <tr><td>angemeldet und registriert</td><td>19.141</td><td>100,0 %</td></tr>
+      <tr><td>erste Befragung beantwortet</td><td>5.270</td><td>27,5 %</td></tr>
+      <tr><td>beide Befragungen beantwortet</td><td>2.645</td><td>13,8 %</td></tr>
+      <tr><td>ausgewertet (zuerst zugesagt)</td><td>1.523</td><td>8,0 %</td></tr>
+      <tr><td>davon gleichgesinnt gepaart</td><td>775</td><td>50,9 %</td></tr>
+      <tr><td>davon andersdenkend gepaart</td><td>748</td><td>49,1 %</td></tr></table>
+    </details>
+    <details><summary>Einordnung der Effektgrößen</summary>
+      <table><tr><th>Studie</th><th>Effekt in SD</th></tr>
+      <tr><td>Canvassing, nach 3 Tagen · Broockman &amp; Kalla 2016</td><td>0,45</td></tr>
+      <tr><td>Metaanalyse Intergruppenkontakt · Paluck et al. 2019</td><td>0,39</td></tr>
+      <tr><td>Polarisierung USA 1996–2016 · Boxell 2020</td><td>0,38</td></tr>
+      <tr><td>Gespräch über Parteigrenze · Santoro &amp; Broockman 2022</td><td>0,34</td></tr>
+      <tr><td>Canvassing, nach 3 Wochen · Broockman &amp; Kalla 2016</td><td>0,30</td></tr>
+      <tr><td>Diese Studie: Abneigung, Andersdenkende</td><td>0,28</td></tr>
+      <tr><td>Diese Studie: Positionen, Gleichgesinnte</td><td>0,16</td></tr>
+      <tr><td>4 Wochen ohne Facebook · Allcott et al. 2020</td><td>0,10</td></tr></table>
+    </details>
+  </div>
+
+  <p class="srcbox">
+    Datengrundlage: Fang, X., Heuser, S., &amp; Stötzer, L. S. (2025). How in-person conversations shape
+    political polarization: Quasi-experimental evidence from a nationwide initiative.
+    <em>Journal of Public Economics, 242</em>, 105309. Open Access, CC BY 4.0.<br>
+    Im Text genannte Vergleichsstudien, alle über Fang et al. (2025) belegt: Allport (1954),
+    Sunstein (2009), Bail et al. (2018), Boxell (2020), Allcott et al. (2020), Paluck et al. (2019),
+    Santoro &amp; Broockman (2022), Broockman &amp; Kalla (2016). Bevölkerungswerte aus ALLBUS 2018.
+  </p>
+</div></div>
+
+<script>
+(function(){
+"use strict";
+var NS="http://www.w3.org/2000/svg";
+function S(t,a){var e=document.createElementNS(NS,t);if(a)for(var k in a){if(a[k]!=null)e.setAttribute(k,a[k]);}return e;}
+function cl(v,a,b){return v<a?a:(v>b?b:v);}
+function lerp(a,b,t){return a+(b-a)*t;}
+function ease(t){t=cl(t,0,1);return t*t*(3-2*t);}
+function seg(s,a,b){return ease((s-a)/(b-a));}
+function de(v,d){return v.toFixed(d==null?2:d).replace(".",",");}
+function th(n){return Math.round(n).toLocaleString("de-DE");}
+function rng(seed){var x=seed;return function(){x=(x*1664525+1013904223)%4294967296;return x/4294967296;};}
+
+var RED="var(--red)",PINK="var(--pink)",GREY="var(--grey)",WHITE="var(--white)";
+var C={ink:"var(--ink)",ink2:"var(--ink-2)",muted:"var(--muted)",grid:"var(--grid)",
+       axis:"var(--axis)",bg:"var(--bg)"};
+/* Grafikzone: alles rechts von x=500. Links davon steht ausschließlich Text. */
+var GX0=520,GX1=1150;
+
+function txt(p,x,y,size,anchor,fill,weight){
+  var e=S("text",{x:x,y:y,"text-anchor":anchor||"start",
+    style:"fill:"+(fill||C.ink2)+";font-size:"+size+"px;font-weight:"+(weight||400)+
+          ";font-variant-numeric:tabular-nums"});
+  p.appendChild(e);return e;
+}
+function op(el,v){el.style.opacity=cl(v,0,1);}
+
+/* ====================== 1 · Zwei Erwartungen ====================== */
+function sc1(svg){
+  var LX=700,LY=360,CX=1015,CY=360,R=118,R2=104;
+  var lm=[],cm=[],i,a;
+  for(i=0;i<9;i++){a=i/9*Math.PI*2;lm.push([LX+Math.cos(a)*R,LY+Math.sin(a)*R]);}
+  for(i=0;i<8;i++){a=i/8*Math.PI*2+0.4;cm.push([CX+Math.cos(a)*R2,CY+Math.sin(a)*R2]);}
+  var links=lm.map(function(){var l=S("line",{style:"stroke:"+PINK+";stroke-width:2"});
+    svg.appendChild(l);return l;});
+  var bridges=[0,1,2].map(function(){var b=S("path",
+    {style:"fill:none;stroke:"+C.ink+";stroke-width:2.6;stroke-linecap:round;opacity:0"});
+    svg.appendChild(b);return b;});
+  svg.appendChild(S("circle",{cx:LX,cy:LY,r:9,style:"fill:"+PINK}));
+  var dots=lm.map(function(){var c=S("circle",{r:9,style:"fill:"+PINK});svg.appendChild(c);return c;});
+  cm.forEach(function(p){svg.appendChild(S("circle",{cx:p[0],cy:p[1],r:9,style:"fill:"+RED}));});
+  svg.appendChild(S("circle",{cx:CX,cy:CY,r:9,style:"fill:"+RED}));
+  txt(svg,LX,560,21,"middle",C.ink2,600).textContent="Gleichgesinnte";
+  txt(svg,CX,560,21,"middle",C.ink2,600).textContent="Andersdenkende";
+  var targets=[cm[3],cm[4],[CX,CY]];
+  return function(s){
+    var k=1-0.5*seg(s,1.05,1.85);
+    lm.forEach(function(p,i){
+      var x=LX+(p[0]-LX)*k,y=LY+(p[1]-LY)*k;
+      dots[i].setAttribute("cx",x);dots[i].setAttribute("cy",y);
+      links[i].setAttribute("x1",LX);links[i].setAttribute("y1",LY);
+      links[i].setAttribute("x2",x);links[i].setAttribute("y2",y);
+      op(links[i],0.3+0.6*seg(s,1.05,1.85));
+    });
+    var bp=seg(s,2.05,2.85),sx=LX+R*k;
+    bridges.forEach(function(b,i){
+      var t=targets[i],mx=(sx+t[0])/2;
+      b.setAttribute("d","M"+sx+" "+LY+" C"+mx+" "+LY+" "+mx+" "+t[1]+" "+
+        lerp(sx,t[0],bp)+" "+lerp(LY,t[1],bp));
+      op(b,bp>0.03?0.85:0);
+    });
+  };
+}
+
+/* ====================== Punktefeld (2 und 10) ====================== */
+function field(seed){
+  var N=260,r=rng(seed),pts=[],i;
+  for(i=0;i<N;i++){
+    var pair=Math.floor(i/2),pc=Math.floor(pair/13),pr=pair%13;
+    pts.push({sx:505+r()*645,sy:115+r()*535,
+              gx:GX0+pc*66+(i%2)*24,gy:130+pr*38,
+              cm:((pair*37)%100)<46,k:r()});
+  }
+  return pts;
+}
+
+/* ====================== 2 · Anmeldung und Paarung ====================== */
+function sc2(svg){
+  var pts=field(11);
+  pts.forEach(function(p){p.el=S("circle",{r:7,style:"fill:"+PINK});svg.appendChild(p.el);});
+  var ring=S("circle",{r:0,style:"fill:none;stroke:"+C.ink+";stroke-width:2;stroke-dasharray:7 7;opacity:0"});
+  svg.appendChild(ring);
+  var rlab=txt(svg,0,0,19,"middle",C.ink,600);rlab.textContent="20 km";op(rlab,0);
+  return function(s){
+    var t=seg(s,1.05,1.9),col=seg(s,2.05,2.8);
+    pts.forEach(function(p){
+      p.el.setAttribute("cx",lerp(p.sx,p.gx,t));
+      p.el.setAttribute("cy",lerp(p.sy,p.gy,t));
+      p.el.style.fill=(p.cm&&col>0.5)?RED:PINK;
+      op(p.el,(col>0.5&&!p.cm)?0.22:0.92);
+    });
+    var rp=seg(s,1.35,1.75)*(1-seg(s,1.95,2.15));
+    ring.setAttribute("cx",pts[80].gx+12);ring.setAttribute("cy",pts[80].gy);
+    ring.setAttribute("r",115*rp);op(ring,rp*0.8);
+    rlab.setAttribute("x",pts[80].gx+12);rlab.setAttribute("y",pts[80].gy-124*rp-12);
+    op(rlab,rp);
+  };
+}
+
+/* ====================== 3 · Woher der Zufall kommt ====================== */
+function sc3(svg){
+  var AX=660,BX=900,Y=345,R=50;
+  var solo=S("g");svg.appendChild(solo);
+  var link=S("line",{x1:AX+R,y1:Y,x2:BX-R,y2:Y,
+    style:"stroke:"+C.axis+";stroke-width:3;stroke-dasharray:7 9"});solo.appendChild(link);
+  var up=S("path",{style:"fill:none;stroke:"+RED+";stroke-width:3;stroke-linecap:round;opacity:0"});
+  var dn=S("path",{style:"fill:none;stroke:"+C.axis+";stroke-width:3;stroke-dasharray:9 10;stroke-linecap:round;opacity:0"});
+  solo.appendChild(up);solo.appendChild(dn);
+  var a=S("circle",{cx:AX,cy:Y,r:R,style:"fill:none;stroke:"+PINK+";stroke-width:3"});
+  var aF=S("circle",{cx:AX,cy:Y,r:R,style:"fill:"+PINK+";opacity:0"});
+  var b=S("circle",{cx:BX,cy:Y,r:R,style:"fill:none;stroke:"+RED+";stroke-width:3"});
+  solo.appendChild(a);solo.appendChild(aF);solo.appendChild(b);
+  var ok=S("path",{d:"M"+(AX-18)+" "+Y+"l13 14 24-27",
+    style:"fill:none;stroke:"+WHITE+";stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:0"});
+  solo.appendChild(ok);
+  var la=txt(solo,AX,Y+R+36,19,"middle",C.ink2,600);la.textContent="sagt zuerst zu";op(la,0);
+  var lb=txt(solo,BX,Y+R+36,19,"middle",RED,600);lb.textContent="entscheidet";op(lb,0);
+  var upT=txt(solo,1010,196,20,"start",RED,600);upT.textContent="Gespräch";op(upT,0);
+  var dnT=txt(solo,1010,524,20,"start",C.muted,600);dnT.textContent="kein Gespräch";op(dnT,0);
+  var grid=[{n:514,c:PINK,t:"Partner sagt zu",x:GX0,y:238},
+            {n:455,c:RED,t:"Partner sagt zu",x:850,y:238},
+            {n:261,c:PINK,t:"Partner sagt ab",x:GX0,y:446},
+            {n:293,c:RED,t:"Partner sagt ab",x:850,y:446}];
+  var gEls=grid.map(function(g){
+    var gr=S("g",{style:"opacity:0"});
+    gr.appendChild(S("rect",{x:g.x,y:g.y,width:300,height:168,rx:14,style:"fill:"+WHITE+";opacity:.62"}));
+    gr.appendChild(S("rect",{x:g.x,y:g.y,width:5,height:168,rx:2.5,style:"fill:"+g.c}));
+    gr.appendChild(S("circle",{cx:g.x+36,cy:g.y+40,r:8,style:"fill:"+g.c}));
+    txt(gr,g.x+26,g.y+104,50,"start",C.ink,700).textContent=th(g.n);
+    txt(gr,g.x+28,g.y+138,17,"start",C.muted,400).textContent=g.t;
+    svg.appendChild(gr);return gr;
+  });
+  var hEls=[{x:GX0+150,y:210,t:"ähnlich gepaart",c:C.ink2},
+            {x:1000,y:210,t:"anders gepaart",c:RED}].map(function(h){
+    var e=txt(svg,h.x,h.y,19,"middle",h.c,600);e.textContent=h.t;op(e,0);return e;});
+  return function(s){
+    var p1=seg(s,1.05,1.8),p2=seg(s,2.05,2.8),p3=seg(s,3.1,3.7),sv=1-seg(s,2.95,3.3);
+    op(solo,sv);solo.style.display=sv<0.04?"none":"";
+    op(aF,p1*0.95);op(ok,p1);op(la,p1);op(lb,p1);op(link,1-p2);
+    up.setAttribute("d","M"+(BX+R)+" "+Y+" C"+(BX+95)+" "+Y+" "+(BX+120)+" 190 "+
+      lerp(BX+R,1040,p2)+" "+lerp(Y,190,p2));
+    dn.setAttribute("d","M"+(BX+R)+" "+Y+" C"+(BX+95)+" "+Y+" "+(BX+120)+" 518 "+
+      lerp(BX+R,1040,p2)+" "+lerp(Y,518,p2));
+    op(up,p2);op(dn,p2);op(upT,p2);op(dnT,p2);
+    gEls.forEach(function(g,i){op(g,(p3-i*0.07)*1.7);});
+    hEls.forEach(function(e){op(e,p3);});
+  };
+}
+
+/* ====================== 4 · Die Gespräche ====================== */
+function sc4(svg){
+  var X0=GX0,X1=GX1,Y=235;
+  var g1=S("g");svg.appendChild(g1);
+  g1.appendChild(S("line",{x1:X0,y1:Y,x2:X1,y2:Y,style:"stroke:"+C.grid+";stroke-width:2"}));
+  [0,60,120,180].forEach(function(m){
+    var x=X0+m/180*(X1-X0);
+    g1.appendChild(S("line",{x1:x,y1:Y-10,x2:x,y2:Y+10,style:"stroke:"+C.axis+";stroke-width:2"}));
+    txt(g1,x,Y+34,16,"middle",C.muted).textContent=m+(m===180?" min":"");
+  });
+  var bar=S("rect",{x:X0,y:Y-11,height:22,rx:8,width:0,style:"fill:"+RED});g1.appendChild(bar);
+  var head=S("circle",{cx:X0,cy:Y,r:11,style:"fill:"+RED+";stroke:"+C.bg+";stroke-width:3"});
+  g1.appendChild(head);
+  var num=txt(g1,X0,Y-44,44,"middle",RED,700);num.textContent="0";
+  var g2=S("g",{style:"opacity:0"});svg.appendChild(g2);
+  var BX0=790,BW=300,BY=420;
+  var bEls=[{l:"Atmosphäre angenehm",v:95},{l:"Partner sympathisch",v:75},
+            {l:"laute Streitgespräche",v:1}].map(function(d,i){
+    var y=BY+i*88;
+    txt(g2,BX0-24,y+7,19,"end",C.ink2).textContent=d.l;
+    g2.appendChild(S("line",{x1:BX0,y1:y+26,x2:BX0+BW,y2:y+26,style:"stroke:"+C.grid+";stroke-width:1.5"}));
+    var rc=S("rect",{x:BX0,y:y-11,height:22,rx:8,width:0,style:"fill:"+RED});g2.appendChild(rc);
+    return {rc:rc,lb:txt(g2,BX0,y+7,22,"start",C.ink,700),v:d.v};
+  });
+  return function(s){
+    var p=seg(s,0.1,0.9),q=seg(s,1.05,1.85);
+    var w=(X1-X0)*(141/180)*p;
+    bar.setAttribute("width",w);head.setAttribute("cx",X0+w);
+    num.setAttribute("x",cl(X0+w,X0+60,X1-60));
+    num.textContent=Math.round(141*p)+" min";op(num,p>0.03?1:0);
+    op(g1,1-0.7*q);op(g2,q);
+    bEls.forEach(function(e,i){
+      var t=cl((q-i*0.12)*1.5,0,1),bw=Math.max(3,BW*e.v/100*t);
+      e.rc.setAttribute("width",bw);
+      e.lb.setAttribute("x",BX0+bw+14);
+      e.lb.textContent=Math.round(e.v*t)+" %";op(e.lb,t);
+    });
+  };
+}
+
+/* ====================== Achse und Schätzer ====================== */
+function axis(svg,d0,d1,ticks,X0,X1,Y0,Y1,zeroLabel){
+  function x(v){return X0+(v-d0)/(d1-d0)*(X1-X0);}
+  ticks.forEach(function(t){
+    var z=Math.abs(t)<1e-9;
+    svg.appendChild(S("line",{x1:x(t),x2:x(t),y1:Y0,y2:Y1,
+      style:"stroke:"+(z?C.axis:C.grid)+";stroke-width:"+(z?2.5:1.5)}));
+    txt(svg,x(t),Y1+32,16,"middle",C.muted).textContent=de(t,1);
+  });
+  if(zeroLabel)txt(svg,x(0),Y0-14,17,"middle",C.muted,600).textContent=zeroLabel;
+  return x;
+}
+function estimate(svg,colour,X1max){
+  var line=S("line",{style:"stroke:"+colour+";stroke-width:6;stroke-linecap:round;opacity:0"});
+  var c1=S("line",{style:"stroke:"+colour+";stroke-width:6;opacity:0"});
+  var c2=S("line",{style:"stroke:"+colour+";stroke-width:6;opacity:0"});
+  var dot=S("circle",{r:15,style:"fill:"+colour+";stroke:"+C.bg+";stroke-width:4;opacity:0"});
+  [line,c1,c2,dot].forEach(function(e){svg.appendChild(e);});
+  var lab=txt(svg,0,0,36,"start",colour,700);op(lab,0);
+  return function(x,est,se,y,p){
+    var lo=est-1.96*se,hi=est+1.96*se;
+    var xe=x(est),xl=lerp(xe,x(lo),p),xh=lerp(xe,x(hi),p);
+    line.setAttribute("x1",xl);line.setAttribute("x2",xh);
+    line.setAttribute("y1",y);line.setAttribute("y2",y);
+    [[c1,xl],[c2,xh]].forEach(function(q){
+      q[0].setAttribute("x1",q[1]);q[0].setAttribute("x2",q[1]);
+      q[0].setAttribute("y1",y-15);q[0].setAttribute("y2",y+15);
+    });
+    dot.setAttribute("cx",xe);dot.setAttribute("cy",y);
+    [line,c1,c2,dot].forEach(function(e){op(e,p);});
+    var flip=x(hi)+150>X1max;
+    lab.setAttribute("x",flip?x(lo)-26:x(hi)+26);
+    lab.setAttribute("text-anchor",flip?"end":"start");
+    lab.setAttribute("y",y+13);
+    lab.textContent=(est>0?"+":"")+de(est*p,3);
+    op(lab,p);
+  };
+}
+
+/* ====================== 5 · Hauptergebnis ====================== */
+function sc5(svg){
+  var X0=GX0,X1=1050,Y0=235,Y1=560,yA=330,yB=500;
+  var x=axis(svg,-0.08,0.30,[-0.05,0,0.1,0.2,0.3],X0,X1,Y0,Y1,"Mitte");
+  var lA=txt(svg,X0,yA-32,20,"start",C.ink2,600);lA.textContent="nach Gespräch mit Gleichgesinnten";op(lA,0);
+  var lB=txt(svg,X0,yB-32,20,"start",C.ink2,600);lB.textContent="nach Gespräch mit Andersdenkenden";op(lB,0);
+  var eA=estimate(svg,PINK,1180),eB=estimate(svg,RED,1180);
+  var band=S("rect",{y:yA,height:yB-yA,style:"fill:"+RED+";opacity:0"});svg.appendChild(band);
+  var arw=S("path",{style:"fill:none;stroke:"+C.ink+";stroke-width:2.5;stroke-linecap:round;opacity:0"});
+  svg.appendChild(arw);
+  var brT=txt(svg,0,0,20,"middle",C.ink,600);brT.textContent="belastbarer Unterschied";op(brT,0);
+  txt(svg,X0,Y1+64,17,"start",C.muted).textContent="← näher an der Mitte";
+  txt(svg,X1,Y1+64,17,"end",C.muted).textContent="weiter von der Mitte weg →";
+  return function(s){
+    var p1=seg(s,1.05,1.85),p2=seg(s,2.05,2.85),p3=seg(s,3.05,3.7);
+    eA(x,0.161,0.050,yA,p1);op(lA,p1);
+    eB(x,0.005,0.045,yB,p2);op(lB,p2);
+    var xa=x(0.161),xb=x(0.005),my=(yA+yB)/2+14;
+    band.setAttribute("x",Math.min(xa,xb));band.setAttribute("width",Math.abs(xa-xb));
+    op(band,p3*0.1);
+    arw.setAttribute("d","M"+xb+" "+my+"L"+xa+" "+my+
+      "M"+(xb+13)+" "+(my-7)+"L"+xb+" "+my+"L"+(xb+13)+" "+(my+7)+
+      "M"+(xa-13)+" "+(my-7)+"L"+xa+" "+my+"L"+(xa-13)+" "+(my+7));
+    op(arw,p3);
+    brT.setAttribute("x",(xa+xb)/2);brT.setAttribute("y",my-18);op(brT,p3);
+  };
+}
+
+/* ====================== 6 · Was das auf der Skala heißt ====================== */
+function sc6(svg){
+  var X0=560,X1=1140,Y=380;
+  function px(p){return X0+(p-1)/6*(X1-X0);}
+  svg.appendChild(S("line",{x1:X0,y1:Y,x2:X1,y2:Y,style:"stroke:"+C.grid+";stroke-width:3"}));
+  for(var i=1;i<=7;i++){
+    svg.appendChild(S("line",{x1:px(i),y1:Y-18,x2:px(i),y2:Y+18,style:"stroke:"+C.axis+";stroke-width:2.5"}));
+    txt(svg,px(i),Y+58,23,"middle",C.muted).textContent=i;
+  }
+  txt(svg,px(4),Y-52,19,"middle",C.muted,600).textContent="Mitte";
+  txt(svg,X0,Y+104,19,"start",C.muted).textContent="lehne ab";
+  txt(svg,X1,Y+104,19,"end",C.muted).textContent="stimme zu";
+  var ghost=S("circle",{cy:Y,r:14,style:"fill:"+C.axis});svg.appendChild(ghost);
+  var arrow=S("path",{style:"fill:none;stroke:"+RED+";stroke-width:3;stroke-linecap:round;opacity:0"});
+  svg.appendChild(arrow);
+  var dot=S("circle",{cy:Y,r:22,style:"fill:"+RED+";stroke:"+C.bg+";stroke-width:4"});svg.appendChild(dot);
+  var lab=txt(svg,0,Y-82,40,"middle",RED,700);
+  return function(s){
+    var phase=s<1?0:1;
+    var from=phase?6:5,to=phase?6.67:6;
+    var p=phase?seg(s,1.05,1.85):seg(s,0.1,0.9);
+    var v=lerp(from,to,p);
+    ghost.setAttribute("cx",px(from));
+    dot.setAttribute("cx",px(v));
+    lab.setAttribute("x",px(v));lab.textContent=de(v,1);
+    arrow.setAttribute("d","M"+px(from)+" "+(Y-44)+"L"+px(v)+" "+(Y-44)+
+      "M"+(px(v)-11)+" "+(Y-51)+"L"+px(v)+" "+(Y-44)+"L"+(px(v)-11)+" "+(Y-37));
+    op(arrow,p>0.05?1:0);
+  };
+}
+
+/* ====================== 7 · Abneigung und Zusammenhalt ====================== */
+function sc7(svg){
+  var X0=GX0,X1=1040,Y0=235,Y1=560,yA=330,yB=500;
+  var x=axis(svg,-0.46,0.42,[-0.4,-0.2,0,0.2,0.4],X0,X1,Y0,Y1,"keine Wirkung");
+  var tA=txt(svg,X0,yA-32,20,"start",C.ink2,600);tA.textContent="Abneigung gegen die andere Seite";op(tA,0);
+  var tB=txt(svg,X0,yB-32,20,"start",C.ink2,600);tB.textContent="Zutrauen in die Gesellschaft";op(tB,0);
+  var eA=estimate(svg,RED,1180),eB=estimate(svg,RED,1180);
+  txt(svg,X0,Y1+64,17,"start",C.muted).textContent="← weniger";
+  txt(svg,X1,Y1+64,17,"end",C.muted).textContent="mehr →";
+  return function(s){
+    var p1=seg(s,1.05,1.85),p2=seg(s,2.05,2.85);
+    eA(x,-0.277,0.077,yA,p1);op(tA,p1);
+    eB(x,0.201,0.078,yB,p2);op(tB,p2);
+  };
+}
+
+/* ====================== 8 · Woran es hing ====================== */
+function sc8(svg){
+  var X0=660,X1=1140,Y0=240,Y1=600;
+  function X(v){return X0+(v+1.2)/2.4*(X1-X0);}
+  function Y(v){return Y0+(0.2-v)/0.85*(Y1-Y0);}
+  [0.2,0,-0.2,-0.4,-0.6].forEach(function(t){
+    svg.appendChild(S("line",{x1:X0,x2:X1,y1:Y(t),y2:Y(t),
+      style:"stroke:"+(t===0?C.axis:C.grid)+";stroke-width:"+(t===0?2.5:1.5)}));
+    txt(svg,X0-16,Y(t)+6,16,"end",C.muted).textContent=de(t,1);
+  });
+  txt(svg,X1,Y(0)-14,17,"end",C.muted).textContent="keine Wirkung";
+  function f(v){return -0.277+v*(-0.293);}
+  var band=S("path",{style:"fill:"+PINK+";opacity:.45"});svg.appendChild(band);
+  band.setAttribute("d","M"+X(-1.1)+" "+Y(f(-1.1)+0.085)+"L"+X(1.1)+" "+Y(f(1.1)+0.085)+
+    "L"+X(1.1)+" "+Y(f(1.1)-0.085)+"L"+X(-1.1)+" "+Y(f(-1.1)-0.085)+"Z");
+  svg.appendChild(S("line",{x1:X(-1.1),y1:Y(f(-1.1)),x2:X(1.1),y2:Y(f(1.1)),
+    style:"stroke:"+RED+";stroke-width:4;stroke-linecap:round"}));
+  txt(svg,X(-1.1),Y1+58,17,"start",C.muted).textContent="unangenehm erlebt";
+  txt(svg,X1,Y1+58,17,"end",C.muted).textContent="besonders angenehm erlebt";
+  txt(svg,X0-16,Y0-28,17,"start",C.muted).textContent="Wirkung auf die Abneigung";
+  var dot=S("circle",{r:17,style:"fill:"+RED+";stroke:"+C.bg+";stroke-width:4"});svg.appendChild(dot);
+  var val=txt(svg,0,0,34,"start",RED,700);
+  var note=txt(svg,0,0,19,"start",C.ink2,600);
+  return function(s){
+    var p=cl(s/2,0,1),v=lerp(-1.1,1.1,p),y=f(v);
+    dot.setAttribute("cx",X(v));dot.setAttribute("cy",Y(y));
+    val.textContent=de(y,2)+" SD";
+    note.textContent=v<-0.45?"der Effekt verschwindet":(v<0.45?"Durchschnitt aller Treffen":"etwa doppelt so stark");
+    var right=X(v)>X1-300;
+    val.setAttribute("y",Y(y)-20);note.setAttribute("y",Y(y)+20);
+    [val,note].forEach(function(e){
+      e.setAttribute("text-anchor",right?"end":"start");
+      e.setAttribute("x",X(v)+(right?-28:28));
+    });
+  };
+}
+
+/* ====================== 9 · Einordnung ====================== */
+function sc9(svg){
+  var d=[{l:"Canvassing, nach 3 Tagen",v:0.45},
+         {l:"Metaanalyse Intergruppenkontakt",v:0.39},
+         {l:"Polarisierung USA, 20 Jahre",v:0.38},
+         {l:"Gespräch über Parteigrenze",v:0.34},
+         {l:"Canvassing, nach 3 Wochen",v:0.30},
+         {l:"Abneigung, Andersdenkende",v:0.28,own:RED},
+         {l:"Positionen, Gleichgesinnte",v:0.16,own:PINK},
+         {l:"4 Wochen ohne Facebook",v:0.10}];
+  var X0=840,X1=1130,Y0=160,RH=62;
+  function X(v){return X0+v/0.5*(X1-X0);}
+  [0,0.1,0.2,0.3,0.4,0.5].forEach(function(t){
+    svg.appendChild(S("line",{x1:X(t),x2:X(t),y1:Y0-26,y2:Y0+d.length*RH-36,
+      style:"stroke:"+C.grid+";stroke-width:1.5"}));
+    txt(svg,X(t),Y0+d.length*RH-6,15,"middle",C.muted).textContent=de(t,1);
+  });
+  var rows=d.map(function(r,i){
+    var y=Y0+i*RH,col=r.own||C.muted;
+    var lab=txt(svg,X0-22,y+6,r.own?19:17,"end",r.own?C.ink:C.muted,r.own?700:400);
+    lab.textContent=r.l;
+    var ln=S("line",{x1:X0,y1:y,x2:X0,y2:y,style:"stroke:"+col+";stroke-width:"+(r.own?3:2)+";opacity:.5"});
+    svg.appendChild(ln);
+    var dot=S("circle",{cx:X0,cy:y,r:r.own?12:8,style:"fill:"+col+";stroke:"+C.bg+";stroke-width:3"});
+    svg.appendChild(dot);
+    return {r:r,y:y,ln:ln,dot:dot,
+      vt:txt(svg,X0,y+6,r.own?22:17,"start",r.own?C.ink:C.muted,r.own?700:400),lab:lab,i:i};
+  });
+  return function(s){
+    rows.forEach(function(q){
+      var t=cl((seg(s,0.1,1.6)*(d.length+1)-q.i)*0.85,0,1);
+      var xv=X(q.r.v*t);
+      q.ln.setAttribute("x2",xv);q.dot.setAttribute("cx",xv);
+      q.vt.setAttribute("x",xv+16);q.vt.textContent=de(q.r.v*t,2);
+      op(q.ln,t*0.5);op(q.dot,t);op(q.vt,t);op(q.lab,0.25+0.75*t);
+    });
+  };
+}
+
+/* ====================== 10 · Für wen gilt das ====================== */
+function sc10(svg){
+  var pts=field(11);
+  pts.forEach(function(p){
+    p.el=S("circle",{cx:p.gx,cy:p.gy,r:7,style:"fill:"+(p.cm?RED:PINK)});svg.appendChild(p.el);
+  });
+  var g2=S("g",{style:"opacity:0"});svg.appendChild(g2);
+  var X0=830,X1=1130,CY=320;
+  function CX(v){return X0+v/100*(X1-X0);}
+  [0,25,50,75,100].forEach(function(t){
+    g2.appendChild(S("line",{x1:CX(t),x2:CX(t),y1:CY-76,y2:CY+206,style:"stroke:"+C.grid+";stroke-width:1.5"}));
+    txt(g2,CX(t),CY+236,15,"middle",C.muted).textContent=t+(t===100?" %":"");
+  });
+  txt(g2,X0-22,CY-76,15,"end",C.muted).textContent="Teilnehmende gegen Bevölkerung (ALLBUS 2018)";
+  [{l:"misstraut anderen Menschen",a:12.0,b:34.6},
+   {l:"stimmt der Ehe für alle zu",a:84.1,b:75.9}].forEach(function(c,i){
+    var y=CY+i*150;
+    txt(g2,X0-22,y+6,19,"end",C.ink2).textContent=c.l;
+    g2.appendChild(S("line",{x1:CX(c.a),y1:y,x2:CX(c.b),y2:y,style:"stroke:"+C.axis+";stroke-width:3"}));
+    g2.appendChild(S("circle",{cx:CX(c.b),cy:y,r:12,style:"fill:"+C.bg+";stroke:"+C.muted+";stroke-width:3"}));
+    g2.appendChild(S("circle",{cx:CX(c.a),cy:y,r:12,style:"fill:"+RED}));
+    txt(g2,CX(c.a),y-26,21,"middle",RED,700).textContent=de(c.a,1)+" %";
+    txt(g2,CX(c.b),y+36,17,"middle",C.muted).textContent=de(c.b,1)+" %";
+  });
+  return function(s){
+    var keep=s<1?lerp(1,0.275,seg(s,0.15,0.95)):lerp(0.275,0.08,seg(s,1.05,1.7));
+    var fade=seg(s,2.05,2.5);
+    pts.forEach(function(p){op(p.el,(p.k<=keep?0.92:0.08)*(1-fade));});
+    op(g2,fade);
+  };
+}
+
+/* ====================== Steuerung ====================== */
+var builders={1:sc1,2:sc2,3:sc3,4:sc4,5:sc5,6:sc6,7:sc7,8:sc8,9:sc9,10:sc10};
+var scenes=[];
+[].forEach.call(document.querySelectorAll(".scene"),function(sec){
+  var id=+sec.dataset.sc,steps=+sec.dataset.steps;
+  sec.style.height=((steps+1)*100)+"vh";
+  var svg=sec.querySelector("svg");
+  scenes.push({sec:sec,steps:steps,
+    update:builders[id]?builders[id](svg):null,
+    caps:[].slice.call(sec.querySelectorAll(".cap")),last:-99});
+});
+
+var rail=document.getElementById("rail");
+scenes.forEach(function(){rail.appendChild(document.createElement("i"));});
+var dots=[].slice.call(rail.children);
+
+function counters(cap,p){
+  [].forEach.call(cap.querySelectorAll("[data-count]"),function(e){
+    e.textContent=th((+e.dataset.count)*ease(p))+(e.dataset.suffix||"");
+  });
+}
+
+var ticking=false;
+function frame(){
+  ticking=false;
+  var vh=window.innerHeight,active=-1;
+  scenes.forEach(function(sc,idx){
+    var r=sc.sec.getBoundingClientRect();
+    var p=cl(-r.top/(sc.sec.offsetHeight-vh),0,1);
+    var s=p*sc.steps;
+    var visible=r.top<vh&&r.bottom>0;
+    if(visible&&r.top<=vh*0.5&&r.bottom>=vh*0.5)active=idx;
+    if(visible&&sc.update&&Math.abs(s-sc.last)>0.0015){sc.update(s);sc.last=s;}
+    sc.caps.forEach(function(cap){
+      var from=+cap.dataset.from,to=+cap.dataset.to;
+      var on=visible&&s>=from&&s<to;
+      if(on!==cap.classList.contains("on"))cap.classList.toggle("on",on);
+      if(on)counters(cap,cl((s-from)/0.8,0,1));
+    });
+  });
+  dots.forEach(function(d,i){d.classList.toggle("on",i===active);});
+}
+function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(frame);}}
+window.addEventListener("scroll",onScroll,{passive:true});
+window.addEventListener("resize",onScroll);
+frame();
+})();
+
+</script>
+</body>
+</html>
