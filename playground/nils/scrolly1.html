@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deutschland spricht: Was passiert, wenn Andersdenkende Kaffee trinken?</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: '#FAF8F4',
+                        card: '#FFFFFF',
+                        ink: '#18181B',
+                        inkLight: '#52525B',
+                        inkBorder: '#E6E1D6',
+                        cmRed: '#E04F3E',
+                        cmRedBg: '#FDF2F0',
+                        lmLBlue: '#2E6FD9',
+                        lmLBlueBg: '#F0F5FF',
+                        emeraldSuccess: '#1E9E6E',
+                        amberAccent: '#E59A2B'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom scrollbar and smooth design touchups */
+        body {
+            background-color: #FAF8F4;
+            color: #18181B;
+            font-family: 'Inter', system-ui, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Scrollytelling progress top bar */
+        #progress-bar {
+            transform-origin: left;
+            transition: transform 0.1s ease-out;
+        }
+
+        /* Soft editorial card shadows */
+        .editorial-card {
+            background: #FFFFFF;
+            border: 1px solid #E6E1D6;
+            box-shadow: 0 4px 20px -2px rgba(24, 24, 27, 0.04);
+            border-radius: 16px;
+        }
+
+        .editorial-badge {
+            background: #F4F0E8;
+            border: 1px solid #E6E1D6;
+        }
+
+        /* Custom Range Input */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: #E6E1D6;
+            height: 8px;
+            border-radius: 4px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #18181B;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            transition: transform 0.15s ease;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+
+        /* Sticky visual container helper */
+        .sticky-visual {
+            position: sticky;
+            top: 5rem;
+            height: calc(100vh - 7rem);
+        }
+
+        /* Fade-in animations */
+        .fade-transition {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+    </style>
+</head>
+<body class="relative antialiased selection:bg-amberAccent selection:text-ink">
+
+    <!-- Top Reading Progress Bar -->
+    <div class="fixed top-0 left-0 w-full h-1.5 bg-inkBorder/40 z-50">
+        <div id="progress-bar" class="h-full bg-cmRed w-full scale-x-0"></div>
+    </div>
+
+    <!-- Floating Navigation Bar (Desktop) -->
+    <nav class="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 flex-col space-y-4 z-40 bg-white/80 backdrop-blur border border-inkBorder p-3 rounded-full shadow-lg">
+        <a href="#kapitel-1" data-nav="1" class="nav-dot w-3 h-3 rounded-full bg-inkBorder hover:bg-cmRed transition-all relative group" title="1. Problemstellung">
+            <span class="absolute right-6 top-1/2 -translate-y-1/2 bg-ink text-paper text-xs py-1 px-2.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-medium">1. Das Gefühl der Trennung</span>
+        </a>
+        <a href="#kapitel-2" data-nav="2" class="nav-dot w-3 h-3 rounded-full bg-inkBorder hover:bg-cmRed transition-all relative group" title="2. Das Experiment">
+            <span class="absolute right-6 top-1/2 -translate-y-1/2 bg-ink text-paper text-xs py-1 px-2.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-medium">2. Das Blind Date</span>
+        </a>
+        <a href="#kapitel-3" data-nav="3" class="nav-dot w-3 h-3 rounded-full bg-inkBorder hover:bg-cmRed transition-all relative group" title="3. Überraschung I">
+            <span class="absolute right-6 top-1/2 -translate-y-1/2 bg-ink text-paper text-xs py-1 px-2.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-medium">3. Die Meinungs-Wippe</span>
+        </a>
+        <a href="#kapitel-4" data-nav="4" class="nav-dot w-3 h-3 rounded-full bg-inkBorder hover:bg-cmRed transition-all relative group" title="4. Überraschung II">
+            <span class="absolute right-6 top-1/2 -translate-y-1/2 bg-ink text-paper text-xs py-1 px-2.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-medium">4. Vorurteilsabbau</span>
+        </a>
+        <a href="#kapitel-5" data-nav="5" class="nav-dot w-3 h-3 rounded-full bg-inkBorder hover:bg-cmRed transition-all relative group" title="5. Hinter den Kulissen">
+            <span class="absolute right-6 top-1/2 -translate-y-1/2 bg-ink text-paper text-xs py-1 px-2.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-medium">5. Die echten Gespräche</span>
+        </a>
+        <a href="#kapitel-6" data-nav="6" class="nav-dot w-3 h-3 rounded-full bg-inkBorder hover:bg-cmRed transition-all relative group" title="6. Ausblick">
+            <span class="absolute right-6 top-1/2 -translate-y-1/2 bg-ink text-paper text-xs py-1 px-2.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-medium">6. Demokratie & Vertrauen</span>
+        </a>
+        <a href="#kapitel-7" data-nav="7" class="nav-dot w-3 h-3 rounded-full bg-inkBorder hover:bg-emeraldSuccess transition-all relative group" title="7. Methodischer Anhang">
+            <span class="absolute right-6 top-1/2 -translate-y-1/2 bg-ink text-paper text-xs py-1 px-2.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-medium">7. Wissenschaftlicher Anhang</span>
+        </a>
+    </nav>
+
+    <!-- Header & Hero Section -->
+    <header class="relative min-h-screen flex flex-col justify-between px-4 sm:px-8 max-w-6xl mx-auto pt-12 pb-16">
+        <!-- Top Editorial Meta -->
+        <div class="flex flex-wrap items-center justify-between border-b border-inkBorder pb-4 text-xs font-semibold tracking-wider text-inkLight uppercase gap-2">
+            <span>Wissenschafts-Scrollytelling</span>
+            <span>Basierend auf Fang, Heuser & Stötzer (2025)</span>
+            <span>Journal of Public Economics</span>
+        </div>
+
+        <!-- Hero Headline & Drifting Text Animation -->
+        <div class="my-auto py-12 text-center max-w-4xl mx-auto">
+            <span class="inline-block px-3 py-1 mb-6 rounded-full text-xs font-semibold uppercase tracking-widest bg-amberAccent/15 text-ink border border-amberAccent/30">
+                Wirtschafts- & Sozialforschung im Fokus
+            </span>
+            
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-extrabold text-ink leading-tight tracking-tight mb-8">
+                Was passiert, wenn man sich mit seinem
+                <span class="relative inline-block text-cmRed italic underline decoration-cmRed/30 underline-offset-8">
+                    politischen Gegner
+                </span>
+                ins Café setzt?
+            </h1>
+
+            <p class="text-lg sm:text-xl text-inkLight max-w-2xl mx-auto font-normal leading-relaxed mb-10">
+                Eine datengestützte Reise durch ein bundesweites Experiment mit 19.141 Teilnehmenden von <em>„Deutschland spricht“</em>. 
+            </p>
+
+            <!-- Drifting Text Visual Animation -->
+            <div id="hero-drift-container" class="relative w-full max-w-xl mx-auto h-24 bg-white/70 rounded-2xl border border-inkBorder overflow-hidden flex items-center justify-center p-4 shadow-sm">
+                <div id="drift-left" class="absolute font-serif text-lg sm:text-xl font-bold text-lmLBlue transition-all duration-700 ease-out left-1/2 -translate-x-full pr-4 border-r-2 border-dashed border-inkBorder flex items-center gap-2">
+                    <span>Echokammern</span>
+                    <span class="text-xs font-sans font-normal px-2 py-0.5 bg-lmLBlueBg rounded text-lmLBlue">Blau</span>
+                </div>
+                <div id="drift-right" class="absolute font-serif text-lg sm:text-xl font-bold text-cmRed transition-all duration-700 ease-out left-1/2 pl-4 flex items-center gap-2">
+                    <span class="text-xs font-sans font-normal px-2 py-0.5 bg-cmRedBg rounded text-cmRed">Rot</span>
+                    <span>Empörung</span>
+                </div>
+            </div>
+            <p class="text-xs text-inkLight mt-3 font-mono">↓ Scrolle herunter, um zu sehen, wie die Lager driften</p>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="flex flex-col items-center justify-center animate-bounce text-inkLight text-xs">
+            <span>ZUM EXPERIMENT SCROLLEN</span>
+            <svg class="w-5 h-5 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7-7-7m14-6l-7 7-7-7"></path></svg>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-8 space-y-32 pb-24">
+
+        <!-- ==========================================
+             KAPITEL 1: PROBLEMSTELLUNG & MEINUNGS-CHECK
+             ========================================== -->
+        <section id="kapitel-1" class="scroll-mt-16 space-y-12">
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-cmRed">Kapitel 1</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-ink">„Reden wir eigentlich noch miteinander?“</h2>
+                <div class="w-16 h-1 bg-cmRed mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-7 space-y-6 text-base sm:text-lg text-inkLight leading-relaxed">
+                    <p class="font-medium text-ink">
+                        Herbst 2018: Deutschland steht unter dem Eindruck spürbarer gesellschaftlicher Spannungen. Nach dem erstmaligen Einzug der AfD in den Deutschen Bundestag verschärften sich die Debatten über Migration, Klimaschutz und Zusammenhalt spürbar.
+                    </p>
+                    <p>
+                        In den sozialen Netzwerken verfestigten sich Algorithmen-getriebene Blasen. Politische Kontrahenten wurden seltener als Dialogpartner und öfter als böswillige Gegenseite wahrgenommen.
+                    </p>
+                    
+                    <!-- Editorial Quote Block -->
+                    <blockquote class="editorial-card p-6 border-l-4 border-l-amberAccent my-6 bg-paper">
+                        <p class="font-serif italic text-ink text-base sm:text-lg leading-relaxed mb-3">
+                            „Wo man auch hinschaut – besonders in den sozialen Medien – sehen wir Hass; es gibt Geschrei und tägliche Empörung. Ich habe das Gefühl, dass wir Deutschen immer weniger Zeit damit verbringen, miteinander zu sprechen. Und noch weniger Zeit damit, einander zuzuhören.“
+                        </p>
+                        <footer class="text-xs font-semibold text-inkLight uppercase tracking-wider">
+                            — Bundespräsident Frank-Walter Steinmeier (Weihnachtsansprache 2018)
+                        </footer>
+                    </blockquote>
+                </div>
+
+                <!-- Interactive Widget: Der Meinungs-Check -->
+                <div class="md:col-span-5">
+                    <div class="editorial-card p-6 sm:p-8 space-y-6 bg-white relative overflow-hidden border-2 border-inkBorder">
+                        <div class="flex items-center justify-between border-b border-inkBorder pb-3">
+                            <span class="text-xs font-bold uppercase tracking-wider text-ink">Interaktives Widget</span>
+                            <span id="quiz-step-indicator" class="text-xs font-mono font-bold bg-amberAccent/20 px-2 py-0.5 rounded text-ink">Frage 1 von 4</span>
+                        </div>
+
+                        <h3 class="font-serif text-xl font-bold text-ink">Der Meinungs-Check</h3>
+                        <p class="text-xs text-inkLight">Wie hättest du bei den Streitfragen von 2018 abgestimmt?</p>
+
+                        <!-- Quiz Questions Cards -->
+                        <div id="quiz-box" class="space-y-4">
+                            <!-- Question 1 -->
+                            <div class="quiz-q transition-all duration-300" data-q="1">
+                                <p class="font-medium text-sm text-ink mb-3">1. „Können Muslime und Nicht-Muslime in Deutschland zusammenleben?“</p>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button onclick="answerQuiz(1, 'Ja')" class="q-btn font-semibold text-sm py-2.5 px-4 rounded-xl border border-inkBorder hover:border-lmLBlue hover:bg-lmLBlueBg hover:text-lmLBlue transition-all">Ja</button>
+                                    <button onclick="answerQuiz(1, 'Nein')" class="q-btn font-semibold text-sm py-2.5 px-4 rounded-xl border border-inkBorder hover:border-cmRed hover:bg-cmRedBg hover:text-cmRed transition-all">Nein</button>
+                                </div>
+                            </div>
+                            <!-- Question 2 -->
+                            <div class="quiz-q hidden transition-all duration-300" data-q="2">
+                                <p class="font-medium text-sm text-ink mb-3">2. „Sollte Fleisch höher besteuert werden, um den Konsum zu senken?“</p>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button onclick="answerQuiz(2, 'Ja')" class="q-btn font-semibold text-sm py-2.5 px-4 rounded-xl border border-inkBorder hover:border-lmLBlue hover:bg-lmLBlueBg hover:text-lmLBlue transition-all">Ja</button>
+                                    <button onclick="answerQuiz(2, 'Nein')" class="q-btn font-semibold text-sm py-2.5 px-4 rounded-xl border border-inkBorder hover:border-cmRed hover:bg-cmRedBg hover:text-cmRed transition-all">Nein</button>
+                                </div>
+                            </div>
+                            <!-- Question 3 -->
+                            <div class="quiz-q hidden transition-all duration-300" data-q="3">
+                                <p class="font-medium text-sm text-ink mb-3">3. „Sollten deutsche Innenstädte autofrei werden?“</p>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button onclick="answerQuiz(3, 'Ja')" class="q-btn font-semibold text-sm py-2.5 px-4 rounded-xl border border-inkBorder hover:border-lmLBlue hover:bg-lmLBlueBg hover:text-lmLBlue transition-all">Ja</button>
+                                    <button onclick="answerQuiz(3, 'Nein')" class="q-btn font-semibold text-sm py-2.5 px-4 rounded-xl border border-inkBorder hover:border-cmRed hover:bg-cmRedBg hover:text-cmRed transition-all">Nein</button>
+                                </div>
+                            </div>
+                            <!-- Question 4 -->
+                            <div class="quiz-q hidden transition-all duration-300" data-q="4">
+                                <p class="font-medium text-sm text-ink mb-3">4. „Sollte Deutschland strengere Grenzkontrollen einführen?“</p>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button onclick="answerQuiz(4, 'Ja')" class="q-btn font-semibold text-sm py-2.5 px-4 rounded-xl border border-inkBorder hover:border-lmLBlue hover:bg-lmLBlueBg hover:text-lmLBlue transition-all">Ja</button>
+                                    <button onclick="answerQuiz(4, 'Nein')" class="q-btn font-semibold text-sm py-2.5 px-4 rounded-xl border border-inkBorder hover:border-cmRed hover:bg-cmRedBg hover:text-cmRed transition-all">Nein</button>
+                                </div>
+                            </div>
+
+                            <!-- Challenge Result Screen -->
+                            <div id="quiz-result" class="hidden space-y-4 pt-2">
+                                <div class="p-4 bg-paper rounded-xl border border-inkBorder text-center space-y-3">
+                                    <div class="flex justify-center -space-x-3">
+                                        <div class="w-10 h-10 rounded-full bg-lmLBlue text-white font-bold flex items-center justify-center border-2 border-white text-xs">DU</div>
+                                        <div class="w-10 h-10 rounded-full bg-cmRed text-white font-bold flex items-center justify-center border-2 border-white text-xs">MATCH</div>
+                                    </div>
+                                    <p class="font-serif font-bold text-sm text-ink">
+                                        Stell dir vor: Jemand hat bei allen 4 Fragen das <span class="text-cmRed underline">exakte Gegenteil</span> gewählt.
+                                    </p>
+                                    <p class="text-xs text-inkLight">
+                                        Würdest du dich trauen, dich mit dieser Person für 2 Stunden ins Café zu setzen?
+                                    </p>
+                                </div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button onclick="challengeResponse(true)" class="py-2.5 px-3 bg-emeraldSuccess text-white text-xs font-bold rounded-xl hover:bg-emerald-700 transition-colors shadow">
+                                        Ja, ich traue mich!
+                                    </button>
+                                    <button onclick="challengeResponse(false)" class="py-2.5 px-3 bg-inkLight text-white text-xs font-bold rounded-xl hover:bg-ink transition-colors">
+                                        Ehrlich: eher nicht
+                                    </button>
+                                </div>
+                                <div id="challenge-feedback" class="hidden text-xs text-center p-3 bg-lmLBlueBg text-lmLBlue font-medium rounded-lg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             KAPITEL 2: DAS EXPERIMENT & STICKY SCROLLY
+             ========================================== -->
+        <section id="kapitel-2" class="scroll-mt-16 space-y-12">
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-lmLBlue">Kapitel 2</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-ink">„Das Blind Date mit dem Andersdenkenden“</h2>
+                <p class="text-base sm:text-lg text-inkLight">
+                    Im Herbst 2018 riefen <em>DIE ZEIT</em> und Partner die Initiative <strong>„Deutschland spricht“</strong> ins Leben. Genau <strong>19.141 Bürgerinnen und Bürger</strong> machten mit.
+                </p>
+                <div class="w-16 h-1 bg-lmLBlue mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Interaktive Fragen-Chips Übersicht -->
+            <div class="editorial-card p-6 bg-white space-y-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-serif font-bold text-lg text-ink">Die 7 Streitfragen der Registrierung</h3>
+                    <span class="text-xs text-inkLight font-mono">Klick auf ein Thema</span>
+                </div>
+                <div class="flex flex-wrap gap-2" id="questions-chip-container">
+                    <!-- Dynamic chips generated via JS -->
+                </div>
+                <div id="chip-detail" class="p-4 bg-paper rounded-xl border border-inkBorder text-xs text-inkLight font-medium">
+                    Wähle oben eine Frage aus, um Details zu sehen.
+                </div>
+            </div>
+
+            <!-- Sticky Scrollytelling Section: Geographic & Matching Funnel -->
+            <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left Scrollable Text Steps -->
+                <div class="lg:col-span-5 space-y-24 py-8">
+                    
+                    <!-- Step 1 -->
+                    <div id="step-1" class="scrolly-step editorial-card p-6 bg-white space-y-4 border-l-4 border-l-lmLBlue transition-all">
+                        <span class="text-xs font-mono font-bold text-lmLBlue uppercase tracking-wider">Schritt 1 von 3</span>
+                        <h4 class="font-serif text-xl font-bold text-ink">19.141 Freiwillige aus ganz Deutschland</h4>
+                        <p class="text-sm text-inkLight leading-relaxed">
+                            Mitte September 2018 füllten Tausende Teilnehmende einen umfassenden Fragebogen aus: Neben soziodemografischen Daten gaben sie ihre Position zu 7 hochbrisanten Streitfragen an.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div id="step-2" class="scrolly-step editorial-card p-6 bg-white space-y-4 border-l-4 border-l-amberAccent transition-all">
+                        <span class="text-xs font-mono font-bold text-amberAccent uppercase tracking-wider">Schritt 2 von 3</span>
+                        <h4 class="font-serif text-xl font-bold text-ink">Die 20-km-Hürde der Nachbarschaft</h4>
+                        <p class="text-sm text-inkLight leading-relaxed">
+                            Der Algorithmus hatte den Auftrag, maximale Meinungsverschiedenheit zu matchen – aber nur innerhalb von <strong>maximal 20 Kilometer Entfernung</strong>.
+                        </p>
+                        <p class="text-xs text-inkLight bg-paper p-3 rounded-lg border border-inkBorder">
+                            <strong>Die Folge:</strong> Da im Teilnah mepool vor allem linksliberale Stadtbewohner überrepräsentiert waren, gab es auf dem Land und in manchen Regionen schlicht keine passenden konservativen Gegenpole im 20-km-Radius.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div id="step-3" class="scrolly-step editorial-card p-6 bg-white space-y-4 border-l-4 border-l-cmRed transition-all">
+                        <span class="text-xs font-mono font-bold text-cmRed uppercase tracking-wider">Schritt 3 von 3</span>
+                        <h4 class="font-serif text-xl font-bold text-ink">Zwei Welten entstehen: CM vs. LM</h4>
+                        <p class="text-sm text-inkLight leading-relaxed">
+                            Durch den Geofilter teilt der Algorithmus die 18.917 gematchten Paare in zwei völlig unterschiedliche Gruppen:
+                        </p>
+                        <ul class="text-xs space-y-2 text-ink">
+                            <li class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-cmRed inline-block"></span>
+                                <strong>8.573 Andersdenkende (CM):</strong> ≥ 4 Meinungsverschiedenheiten (46 %)
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-lmLBlue inline-block"></span>
+                                <strong>10.344 Gleichgesinnte (LM):</strong> ≤ 3 Unterschiede (54 %)
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- Right Sticky Visualizer (Map / Sankey Diagram) -->
+                <div class="lg:col-span-7 sticky-visual flex flex-col justify-center">
+                    <div class="editorial-card p-4 sm:p-6 bg-white h-full max-h-[580px] flex flex-col justify-between border-2 border-inkBorder shadow-md">
+                        <div class="flex items-center justify-between border-b border-inkBorder pb-3">
+                            <span class="text-xs font-bold uppercase tracking-wider text-ink" id="vis-title">Visualisierung: Deutschlandkarte</span>
+                            <div class="flex items-center gap-1">
+                                <button onclick="setScrollyStep(1)" class="px-2 py-1 text-xs rounded border border-inkBorder font-mono hover:bg-paper">1</button>
+                                <button onclick="setScrollyStep(2)" class="px-2 py-1 text-xs rounded border border-inkBorder font-mono hover:bg-paper">2</button>
+                                <button onclick="setScrollyStep(3)" class="px-2 py-1 text-xs rounded border border-inkBorder font-mono hover:bg-paper">3</button>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic SVG Container -->
+                        <div id="scrolly-svg-container" class="relative w-full h-full flex items-center justify-center overflow-hidden py-2">
+                            <!-- 2D SVG Germany Map & Points -->
+                            <svg id="svg-map" viewBox="0 0 500 600" class="w-full h-full max-h-[440px] transition-all duration-500">
+                                <!-- Stylized Germany SVG Paths -->
+                                <path d="M 230 40 L 290 60 L 340 50 L 390 90 L 410 160 L 370 210 L 430 280 L 410 360 L 340 420 L 330 500 L 250 540 L 170 510 L 130 440 L 140 370 L 90 310 L 110 210 L 170 140 Z" fill="#F4F0E8" stroke="#E6E1D6" stroke-width="3" stroke-linejoin="round"/>
+                                
+                                <!-- Connection Lines Layer -->
+                                <g id="svg-map-lines"></g>
+
+                                <!-- Points Layer -->
+                                <g id="svg-map-points"></g>
+
+                                <!-- 20km Radius Circles Layer -->
+                                <g id="svg-map-radii" class="opacity-0 transition-opacity duration-500"></g>
+                            </svg>
+
+                            <!-- 2D SVG Sankey Trichter Diagram -->
+                            <svg id="svg-sankey" viewBox="0 0 600 400" class="w-full h-full max-h-[440px] hidden transition-all duration-500">
+                                <!-- Nodes -->
+                                <!-- Start node -->
+                                <rect x="30" y="140" width="120" height="120" rx="12" fill="#18181B" />
+                                <text x="90" y="195" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="bold">19.141</text>
+                                <text x="90" y="215" text-anchor="middle" fill="#FAF8F4" font-size="11">Registriert</text>
+
+                                <!-- Flow paths -->
+                                <!-- CM path -->
+                                <path d="M 150 170 C 260 170, 260 90, 370 90 L 370 160 C 260 160, 260 210, 150 210 Z" fill="#E04F3E" opacity="0.85"/>
+                                <!-- LM path -->
+                                <path d="M 150 210 C 260 210, 260 300, 370 300 L 370 370 C 260 370, 260 230, 150 230 Z" fill="#2E6FD9" opacity="0.85"/>
+                                <!-- Unassigned path -->
+                                <path d="M 150 225 C 240 225, 240 240, 370 240 L 370 250 C 240 250, 240 230, 150 230 Z" fill="#A1A1AA" opacity="0.6"/>
+
+                                <!-- CM Node -->
+                                <rect x="370" y="60" width="180" height="90" rx="12" fill="#FDF2F0" stroke="#E04F3E" stroke-width="2" />
+                                <text x="460" y="95" text-anchor="middle" fill="#E04F3E" font-size="15" font-weight="bold">8.573 Paare (46%)</text>
+                                <text x="460" y="118" text-anchor="middle" fill="#18181B" font-size="11">Andersdenkende (CM)</text>
+
+                                <!-- LM Node -->
+                                <rect x="370" y="280" width="180" height="90" rx="12" fill="#F0F5FF" stroke="#2E6FD9" stroke-width="2" />
+                                <text x="460" y="315" text-anchor="middle" fill="#2E6FD9" font-size="15" font-weight="bold">10.344 Paare (54%)</text>
+                                <text x="460" y="338" text-anchor="middle" fill="#18181B" font-size="11">Gleichgesinnte (LM)</text>
+                            </svg>
+                        </div>
+
+                        <!-- Footer Caption -->
+                        <div class="border-t border-inkBorder pt-3 text-center">
+                            <p id="vis-caption" class="text-xs text-inkLight font-medium">
+                                Über 85 % der gematchten Paare mit beidseitiger Zusage trafen sich am 23. September 2018 tatsächlich.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             KAPITEL 3: ÜBERRASCHUNG I - MEINUNGS-WIPPE
+             ========================================== -->
+        <section id="kapitel-3" class="scroll-mt-16 space-y-12">
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-lmLBlue">Kapitel 3 · Die Echokammer</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-ink">„Gefangen im eigenen Lager“</h2>
+                <p class="text-base sm:text-lg text-inkLight">
+                    Was passiert, wenn sich Menschen treffen, die ohnehin der gleichen Meinung sind? Das Ergebnis überraschte selbst die Forschung.
+                </p>
+                <div class="w-16 h-1 bg-lmLBlue mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Narrative Intro -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto text-base text-inkLight leading-relaxed">
+                <div class="editorial-card p-6 bg-lmLBlueBg border-lmLBlue/30 space-y-3">
+                    <span class="text-xs font-bold font-mono text-lmLBlue uppercase">Treffen unter Gleichgesinnten (LM)</span>
+                    <h3 class="font-serif font-bold text-lg text-ink">Der Echokammer-Verstärker</h3>
+                    <p class="text-sm">
+                        Das Gespräch wirkt wie ein Katalysator: Nach dem Treffen wanderten die politischen Einstellungen signifikant um <strong>13 % bis 16 % einer Standardabweichung weiter an die Ränder</strong> des Spektrums. Man bestätigt sich gegenseitig und wird extremer.
+                    </p>
+                </div>
+                <div class="editorial-card p-6 bg-cmRedBg border-cmRed/30 space-y-3">
+                    <span class="text-xs font-bold font-mono text-cmRed uppercase">Treffen unter Andersdenkenden (CM)</span>
+                    <h3 class="font-serif font-bold text-lg text-ink">Stabilität ohne Backfire</h3>
+                    <p class="text-sm">
+                        Bei Andersdenkenden lag der Meinungsverschiebungseffekt bei <strong>nahezu exakt 0 %</strong>. Niemand ließ sich in zwei Stunden bekehren – aber es gab auch keine Verhärtung aus Trotz („Backfire-Effekt“).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interactive Widget: Die Meinungs-Wippe -->
+            <div class="editorial-card p-6 sm:p-8 bg-white space-y-8 border-2 border-inkBorder max-w-4xl mx-auto shadow-md">
+                <div class="flex flex-wrap items-center justify-between gap-4 border-b border-inkBorder pb-4">
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-ink">Die politische Meinungs-Wippe</h3>
+                        <p class="text-xs text-inkLight">Simuliere den Effekt des zweistündigen Gesprächs auf die Position der Gesprächspartner</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button id="mode-lm-btn" onclick="setSeesawMode('LM')" class="px-4 py-2 text-xs font-bold rounded-xl border border-lmLBlue bg-lmLBlue text-white transition-all shadow-sm">
+                            Gleichgesinnte (LM)
+                        </button>
+                        <button id="mode-cm-btn" onclick="setSeesawMode('CM')" class="px-4 py-2 text-xs font-bold rounded-xl border border-inkBorder bg-paper text-ink hover:border-cmRed transition-all">
+                            Andersdenkende (CM)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2D SVG Seesaw Scene -->
+                <div class="relative w-full h-80 bg-paper rounded-2xl border border-inkBorder p-4 flex flex-col justify-between overflow-hidden">
+                    
+                    <!-- Top Café Table 2D Illustration -->
+                    <div class="flex items-center justify-center gap-12 pt-4">
+                        <!-- Person Left -->
+                        <div class="flex flex-col items-center">
+                            <svg class="w-16 h-16" viewBox="0 0 100 100">
+                                <circle cx="50" cy="35" r="22" fill="#18181B"/>
+                                <path d="M 20 90 C 20 60, 80 60, 80 90 Z" fill="#2E6FD9" id="avatar-left-body"/>
+                            </svg>
+                            <span class="text-xs font-bold text-ink mt-1" id="avatar-left-label">Teilnehmer A</span>
+                        </div>
+
+                        <!-- Café Table SVG -->
+                        <div class="relative flex flex-col items-center">
+                            <div class="w-20 h-4 bg-amberAccent/40 rounded-full border border-amberAccent"></div>
+                            <div class="w-3 h-14 bg-inkBorder"></div>
+                            <div class="w-12 h-2 bg-inkBorder rounded-full"></div>
+                            <!-- Coffee Cups -->
+                            <div class="absolute -top-3 flex gap-4">
+                                <div class="w-3 h-3 bg-white rounded-sm border border-ink"></div>
+                                <div class="w-3 h-3 bg-white rounded-sm border border-ink"></div>
+                            </div>
+                        </div>
+
+                        <!-- Person Right -->
+                        <div class="flex flex-col items-center">
+                            <svg class="w-16 h-16" viewBox="0 0 100 100">
+                                <circle cx="50" cy="35" r="22" fill="#18181B"/>
+                                <path d="M 20 90 C 20 60, 80 60, 80 90 Z" fill="#2E6FD9" id="avatar-right-body"/>
+                            </svg>
+                            <span class="text-xs font-bold text-ink mt-1" id="avatar-right-label">Teilnehmer B</span>
+                        </div>
+                    </div>
+
+                    <!-- Political Spectrum Scale (1 to 7) -->
+                    <div class="space-y-2 px-6 pb-4">
+                        <div class="flex justify-between text-xs font-bold text-inkLight font-mono">
+                            <span>1 (Links)</span>
+                            <span>4 (Politische Mitte)</span>
+                            <span>7 (Rechts)</span>
+                        </div>
+                        
+                        <!-- Spectrum Bar -->
+                        <div class="relative w-full h-6 bg-white rounded-full border-2 border-inkBorder overflow-hidden">
+                            <!-- Middle marker line -->
+                            <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-inkBorder border-dashed"></div>
+
+                            <!-- Marker Left -->
+                            <div id="marker-left" class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-lmLBlue border-2 border-white shadow transition-all duration-700 flex items-center justify-center text-[10px] font-bold text-white" style="left: 35%;">
+                                A
+                            </div>
+
+                            <!-- Marker Right -->
+                            <div id="marker-right" class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-lmLBlue border-2 border-white shadow transition-all duration-700 flex items-center justify-center text-[10px] font-bold text-white" style="left: 45%;">
+                                B
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulation Trigger & Banner -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+                    <button onclick="playSeesawAnimation()" class="w-full sm:w-auto px-6 py-3 bg-ink text-paper font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-inkLight transition-all flex items-center justify-center gap-2 shadow">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path></svg>
+                        <span>Gespräch simulieren</span>
+                    </button>
+
+                    <div id="seesaw-status-banner" class="w-full sm:w-auto text-xs font-semibold p-3 rounded-xl bg-paper border border-inkBorder text-ink text-center">
+                        Bereit für die Simulation. Wähle den Modus und klicke auf den Button.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Detail Note -->
+            <div class="max-w-2xl mx-auto text-center text-xs text-inkLight">
+                <p>
+                    *Der Verstärkungseffekt unter Gleichgesinnten zeigte sich über 11 abgefragte Themen hinweg – am stärksten bei Verteilungsfragen und europäischer Integration.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             KAPITEL 4: ÜBERRASCHUNG II - VORURTEILSABBAU
+             ========================================== -->
+        <section id="kapitel-4" class="scroll-mt-16 space-y-12">
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-emeraldSuccess">Kapitel 4 · Menschlicher Durchbruch</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-ink">„Keine Annäherung – aber plötzlich Respekt“</h2>
+                <p class="text-base sm:text-lg text-inkLight">
+                    Während die Sachpositionen unverändert blieben, geschah auf der menschlichen Ebene ein gewaltiger Wandel: Die Verachtung gegenüber Andersdenkenden brach ein.
+                </p>
+                <div class="w-16 h-1 bg-emeraldSuccess mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Interactive Barometer Slider Container -->
+            <div class="editorial-card p-6 sm:p-8 bg-white border-2 border-inkBorder space-y-8 max-w-4xl mx-auto shadow-md">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-inkBorder pb-4 gap-2">
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-ink">Das Stereotypen-Barometer</h3>
+                        <p class="text-xs text-inkLight">Bewege den Schieberegler, um die Transformation des Vorurteils-Bildes zu beobachten</p>
+                    </div>
+                    <span id="barometer-percentage-badge" class="self-start sm:self-auto font-mono text-xs font-bold px-3 py-1 bg-emeraldSuccess/15 text-emeraldSuccess border border-emeraldSuccess/30 rounded-full">
+                        Vor dem Treffen (0%)
+                    </span>
+                </div>
+
+                <!-- 2D Visual Scene for Stereotype Reduction -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                    
+                    <!-- Left: 2D Silhouette Figure with Fading Tags -->
+                    <div class="md:col-span-7 relative h-72 bg-paper rounded-2xl border border-inkBorder p-4 flex items-center justify-center overflow-hidden">
+                        
+                        <!-- Center 2D Figure SVG -->
+                        <div class="relative z-10 text-center transition-all duration-500" id="figure-wrapper">
+                            <svg class="w-32 h-32 mx-auto transition-all duration-500" viewBox="0 0 100 100">
+                                <circle cx="50" cy="35" r="22" id="fig-head" fill="#27272A"/>
+                                <path d="M 15 95 C 15 55, 85 55, 85 95 Z" id="fig-body" fill="#27272A"/>
+                                <!-- Smile SVG overlay (hidden initially) -->
+                                <path id="fig-smile" opacity="0" d="M 40 42 Q 50 50 60 42" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none" class="transition-opacity duration-500"/>
+                            </svg>
+                            <span id="fig-label" class="text-xs font-bold text-inkLight mt-2 inline-block">Abstrakter „politischer Gegner“</span>
+                        </div>
+
+                        <!-- Floating Stereotype Speech Bubbles -->
+                        <div id="tag-1" class="absolute top-4 left-4 bg-white border border-cmRed/40 text-cmRed text-[11px] font-bold px-3 py-1.5 rounded-xl shadow-sm transition-all duration-500">
+                            💭 „Unfähig, Komplexes zu verstehen“
+                        </div>
+                        <div id="tag-2" class="absolute top-4 right-4 bg-white border border-cmRed/40 text-cmRed text-[11px] font-bold px-3 py-1.5 rounded-xl shadow-sm transition-all duration-500">
+                            💭 „Schlecht informiert“
+                        </div>
+                        <div id="tag-3" class="absolute bottom-4 left-4 bg-white border border-cmRed/40 text-cmRed text-[11px] font-bold px-3 py-1.5 rounded-xl shadow-sm transition-all duration-500">
+                            💭 „Völlig andere Moralwerte“
+                        </div>
+                        <div id="tag-4" class="absolute bottom-4 right-4 bg-white border border-cmRed/40 text-cmRed text-[11px] font-bold px-3 py-1.5 rounded-xl shadow-sm transition-all duration-500">
+                            💭 „Lebt in einer anderen Welt“
+                        </div>
+                    </div>
+
+                    <!-- Right: Dynamic Metric Display -->
+                    <div class="md:col-span-5 space-y-6 text-center md:text-left">
+                        <div class="p-5 bg-paper rounded-2xl border border-inkBorder space-y-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-inkLight">Affektive Polarisierung</span>
+                            <div class="font-serif text-4xl font-extrabold text-emeraldSuccess" id="metric-decrease">
+                                −0,0 %
+                            </div>
+                            <p class="text-xs text-inkLight" id="metric-subtext">
+                                Vorurteile gegenüber dem politischen Gegner sind in der Ausgangslage stark.
+                            </p>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="barometer-slider" class="text-xs font-bold text-ink flex justify-between">
+                                <span>Vor dem Gespräch</span>
+                                <span>Nach 141 Min. Gespräch</span>
+                            </label>
+                            <input type="range" id="barometer-slider" min="0" max="100" value="0" class="w-full">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Visual Comparison: Willingness to Engage Contrast -->
+            <div class="max-w-4xl mx-auto editorial-card p-6 sm:p-8 bg-white border border-inkBorder space-y-6">
+                <div class="space-y-1">
+                    <h3 class="font-serif text-xl font-bold text-ink">Kontaktbereitschaft im Alltagsleben</h3>
+                    <p class="text-xs text-inkLight">Werden Andersdenkende nach dem Treffen eher im eigenen Umfeld akzeptiert?</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- CM Effect -->
+                    <div class="p-5 rounded-xl bg-emeraldSuccess/10 border border-emeraldSuccess/30 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-emeraldSuccess uppercase">Nach Treffen mit Andersdenkenden</span>
+                            <span class="font-mono font-bold text-emeraldSuccess text-base">+15 % SD</span>
+                        </div>
+                        <p class="text-xs text-ink">
+                            <strong>Deutlicher Aufschwung:</strong> Die Bereitschaft, politische Gegner im Freundeskreis oder als Nachbarn zu haben, stieg spürbar an.
+                        </p>
+                    </div>
+
+                    <!-- LM Effect -->
+                    <div class="p-5 rounded-xl bg-paper border border-inkBorder space-y-2 opacity-75">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-inkLight uppercase">Nach Treffen mit Gleichgesinnten</span>
+                            <span class="font-mono font-bold text-cmRed text-base">−15 % SD</span>
+                        </div>
+                        <p class="text-xs text-inkLight">
+                            <strong>Tendenzieller Rückzug:</strong> Wer nur Gleichgesinnte traf, verschloss sich nach dem Gespräch eher gegenüber der Gegenseite.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             KAPITEL 5: BLICK HINTER DIE KULISSEN
+             ========================================== -->
+        <section id="kapitel-5" class="scroll-mt-16 space-y-12">
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-amberAccent">Kapitel 5 · Die Treffen</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-ink">„Wie liefen die Gespräche wirklich ab?“</h2>
+                <p class="text-base sm:text-lg text-inkLight">
+                    Haben die Teilnehmenden Streitfragen aus Höflichkeit vermieden? Die Daten widerlegen diesen Mythos eindeutig.
+                </p>
+                <div class="w-16 h-1 bg-amberAccent mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Dashboard Grid: Clock, Donuts, Hot Topics -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch max-w-5xl mx-auto">
+                
+                <!-- 1. Gesprächs-Uhr 2D SVG -->
+                <div class="md:col-span-5 editorial-card p-6 bg-white space-y-4 flex flex-col justify-between border-2 border-inkBorder shadow-sm">
+                    <div class="flex items-center justify-between border-b border-inkBorder pb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-ink">Durchschnitts-Dauer</span>
+                        <span class="text-xs font-mono bg-amberAccent/20 px-2 py-0.5 rounded text-ink font-bold">141 Min.</span>
+                    </div>
+
+                    <!-- Clock SVG -->
+                    <div class="relative w-48 h-48 mx-auto my-2">
+                        <svg class="w-full h-full" viewBox="0 0 200 200">
+                            <!-- Clock Outer Rim -->
+                            <circle cx="100" cy="100" r="85" fill="#FAF8F4" stroke="#18181B" stroke-width="6"/>
+                            <!-- 15 Minute Bonus Sector (CM) -->
+                            <path d="M 100 100 L 100 15 A 85 85 0 0 1 160 40 Z" fill="#E59A2B" opacity="0.3"/>
+                            
+                            <!-- Hour Ticks -->
+                            <line x1="100" y1="20" x2="100" y2="30" stroke="#18181B" stroke-width="3"/>
+                            <line x1="180" y1="100" x2="170" y2="100" stroke="#18181B" stroke-width="3"/>
+                            <line x1="100" y1="180" x2="100" y2="170" stroke="#18181B" stroke-width="3"/>
+                            <line x1="20" y1="100" x2="30" y2="100" stroke="#18181B" stroke-width="3"/>
+
+                            <!-- Clock Hands -->
+                            <line id="clock-hour-hand" x1="100" y1="100" x2="100" y2="50" stroke="#18181B" stroke-width="6" stroke-linecap="round" class="transition-all duration-700"/>
+                            <line id="clock-minute-hand" x1="100" y1="100" x2="140" y2="100" stroke="#E04F3E" stroke-width="4" stroke-linecap="round" class="transition-all duration-700"/>
+                            <circle cx="100" cy="100" r="6" fill="#18181B"/>
+                        </svg>
+                    </div>
+
+                    <div class="space-y-2 text-center">
+                        <p class="text-xs font-bold text-ink">
+                            Andersdenkende sprachen im Schnitt <span class="text-cmRed font-extrabold">+15 Minuten länger</span> als Gleichgesinnte!
+                        </p>
+                        <button onclick="animateClock()" class="text-[11px] font-mono text-inkLight underline hover:text-ink">Uhr erneut abspielen</button>
+                    </div>
+                </div>
+
+                <!-- 2. Atmosphere & Sympathy Donut Charts -->
+                <div class="md:col-span-7 editorial-card p-6 bg-white space-y-6 flex flex-col justify-between border-2 border-inkBorder shadow-sm">
+                    <div class="flex items-center justify-between border-b border-inkBorder pb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-ink">Subjektiver Eindruck</span>
+                        <span class="text-xs text-inkLight">N = 1.523 Teilnehmende</span>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-3 text-center">
+                        <!-- Donut 1: 95% Atmosphere -->
+                        <div class="space-y-2">
+                            <div class="relative w-20 h-20 mx-auto">
+                                <svg class="w-full h-full" viewBox="0 0 36 36">
+                                    <path class="text-inkBorder" stroke-width="4" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <path class="text-emeraldSuccess" stroke-dasharray="95, 100" stroke-width="4" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                </svg>
+                                <span class="absolute inset-0 flex items-center justify-center font-bold text-sm text-ink">95%</span>
+                            </div>
+                            <span class="text-[11px] font-bold text-ink block leading-tight">Atmosphäre angenehm</span>
+                        </div>
+
+                        <!-- Donut 2: 75% Likeability -->
+                        <div class="space-y-2">
+                            <div class="relative w-20 h-20 mx-auto">
+                                <svg class="w-full h-full" viewBox="0 0 36 36">
+                                    <path class="text-inkBorder" stroke-width="4" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <path class="text-lmLBlue" stroke-dasharray="75, 100" stroke-width="4" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                </svg>
+                                <span class="absolute inset-0 flex items-center justify-center font-bold text-sm text-ink">75%</span>
+                            </div>
+                            <span class="text-[11px] font-bold text-ink block leading-tight">Gegenüber sympathisch</span>
+                        </div>
+
+                        <!-- Donut 3: 1% Heated argument -->
+                        <div class="space-y-2">
+                            <div class="relative w-20 h-20 mx-auto">
+                                <svg class="w-full h-full" viewBox="0 0 36 36">
+                                    <path class="text-inkBorder" stroke-width="4" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <path class="text-cmRed" stroke-dasharray="1, 100" stroke-width="4" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                </svg>
+                                <span class="absolute inset-0 flex items-center justify-center font-bold text-sm text-ink">~1%</span>
+                            </div>
+                            <span class="text-[11px] font-bold text-ink block leading-tight">Hitziger Streit</span>
+                        </div>
+                    </div>
+
+                    <!-- Callout Badge for Dissensus Topics -->
+                    <div class="p-3 bg-paper rounded-xl border border-inkBorder text-xs text-ink flex items-center justify-between gap-3">
+                        <span class="font-bold text-cmRed text-sm">+28 %</span>
+                        <span class="text-inkLight">Höhere Wahrscheinlichkeit, dass Streitfragen diskutiert wurden, bei denen Uneinigkeit bestand. Kein Ausweichen!</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Top 3 Topics Ranking -->
+            <div class="editorial-card p-6 bg-white border border-inkBorder max-w-3xl mx-auto space-y-4">
+                <h3 class="font-serif font-bold text-lg text-ink">Die am intensivsten diskutierten Streitfragen</h3>
+                
+                <div class="space-y-3">
+                    <!-- Topic 1 -->
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-xs font-bold text-ink">
+                            <span>1. Grenzkontrollen verschärfen</span>
+                            <span class="font-mono text-cmRed">53,1 % aller Treffen</span>
+                        </div>
+                        <div class="w-full h-3 bg-paper rounded-full overflow-hidden border border-inkBorder">
+                            <div class="h-full bg-cmRed rounded-full" style="width: 53.1%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Topic 2 -->
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-xs font-bold text-ink">
+                            <span>2. Autofreie Innenstädte</span>
+                            <span class="font-mono text-amberAccent">52,3 % aller Treffen</span>
+                        </div>
+                        <div class="w-full h-3 bg-paper rounded-full overflow-hidden border border-inkBorder">
+                            <div class="h-full bg-amberAccent rounded-full" style="width: 52.3%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Topic 3 -->
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-xs font-bold text-ink">
+                            <span>3. Muslime & Nicht-Muslime in Deutschland</span>
+                            <span class="font-mono text-lmLBlue">52,2 % aller Treffen</span>
+                        </div>
+                        <div class="w-full h-3 bg-paper rounded-full overflow-hidden border border-inkBorder">
+                            <div class="h-full bg-lmLBlue rounded-full" style="width: 52.2%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             KAPITEL 6: AUSBLICK & GESELLSCHAFT
+             ========================================== -->
+        <section id="kapitel-6" class="scroll-mt-16 space-y-12">
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-emeraldSuccess">Kapitel 6 · Zusammenhalt</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-ink">„Was das für unsere Demokratie bedeutet“</h2>
+                <p class="text-base sm:text-lg text-inkLight">
+                    Demokratie setzt keine Einheitlichkeit voraus – sondern das Grundvertrauen, dass die Gegenseite nicht böswillig ist.
+                </p>
+                <div class="w-16 h-1 bg-emeraldSuccess mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Visual 1: Das soziale Vertrauens-Radar Card -->
+            <div class="editorial-card p-6 sm:p-8 bg-white border-2 border-inkBorder max-w-4xl mx-auto space-y-6 shadow-md">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-inkBorder pb-4 gap-2">
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-ink">Das soziale Vertrauens-Radar</h3>
+                        <p class="text-xs text-inkLight">Effekt des Treffens auf das Zutrauen in das gesellschaftliche Gemeinwesen</p>
+                    </div>
+                    <span class="text-xs font-mono font-bold px-3 py-1 bg-emeraldSuccess/15 text-emeraldSuccess border border-emeraldSuccess/30 rounded-full">
+                        +20,1 % SD Gesamtzuwachs (CM)
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Metric 1 -->
+                    <div class="p-5 rounded-xl bg-paper border border-inkBorder space-y-3">
+                        <span class="text-xs font-bold text-inkLight uppercase tracking-wider">Indikator 1</span>
+                        <h4 class="font-serif font-bold text-base text-ink">„Die meisten Menschen sorgen sich um das Wohl anderer“</h4>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-inkLight">Prosozialität</span>
+                            <span class="font-mono font-extrabold text-emeraldSuccess text-lg">+20 % SD</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-inkBorder/40 rounded-full overflow-hidden">
+                            <div class="h-full bg-emeraldSuccess rounded-full" style="width: 70%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Metric 2 -->
+                    <div class="p-5 rounded-xl bg-paper border border-inkBorder space-y-3">
+                        <span class="text-xs font-bold text-inkLight uppercase tracking-wider">Indikator 2</span>
+                        <h4 class="font-serif font-bold text-base text-ink">„Man kann den meisten Menschen in Deutschland vertrauen“</h4>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-inkLight">Generalisiertes Vertrauen</span>
+                            <span class="font-mono font-extrabold text-emeraldSuccess text-lg">+13 % SD</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-inkBorder/40 rounded-full overflow-hidden">
+                            <div class="h-full bg-emeraldSuccess rounded-full" style="width: 55%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual 2: Global Network World Map (My Country Talks) -->
+            <div class="editorial-card p-6 sm:p-8 bg-white border border-inkBorder max-w-4xl mx-auto space-y-6">
+                <div class="text-center space-y-2">
+                    <h3 class="font-serif text-2xl font-bold text-ink">Ein Modell erobert die Welt</h3>
+                    <p class="text-sm text-inkLight max-w-xl mx-auto">
+                        Die Software und die Methodik von <em>„Deutschland spricht“</em> wurden als Plattform <strong>My Country Talks</strong> weltweit exportiert.
+                    </p>
+                </div>
+
+                <!-- 2D World Map SVG with Pulsing Connections -->
+                <div class="relative w-full h-64 bg-paper rounded-2xl border border-inkBorder flex items-center justify-center overflow-hidden">
+                    <svg class="w-full h-full max-h-56" viewBox="0 0 800 400">
+                        <!-- Stylized World Map Path Outlines -->
+                        <path d="M 150 120 Q 200 80 250 110 T 220 220 T 130 200 Z" fill="#E6E1D6" opacity="0.6"/> <!-- NA -->
+                        <path d="M 230 230 Q 280 230 270 340 T 210 320 Z" fill="#E6E1D6" opacity="0.6"/> <!-- SA -->
+                        <path d="M 400 90 Q 480 70 500 120 T 440 180 T 380 120 Z" fill="#2E6FD9" opacity="0.25"/> <!-- EU / GER -->
+                        <path d="M 420 190 Q 500 200 480 320 T 400 260 Z" fill="#E6E1D6" opacity="0.6"/> <!-- AF -->
+                        <path d="M 520 100 Q 700 80 720 220 T 560 220 Z" fill="#E6E1D6" opacity="0.6"/> <!-- ASIA -->
+
+                        <!-- Animated Connection Arc Lines from Germany -->
+                        <path d="M 440 120 Q 330 60 200 130" stroke="#E04F3E" stroke-width="2" stroke-dasharray="6,6" fill="none" class="animate-pulse"/>
+                        <path d="M 440 120 Q 500 180 600 160" stroke="#E04F3E" stroke-width="2" stroke-dasharray="6,6" fill="none" class="animate-pulse"/>
+                        <path d="M 440 120 Q 450 220 460 260" stroke="#E04F3E" stroke-width="2" stroke-dasharray="6,6" fill="none" class="animate-pulse"/>
+
+                        <!-- Pulsing Germany Hub Center -->
+                        <circle cx="440" cy="120" r="10" fill="#E04F3E" opacity="0.3" class="animate-ping"/>
+                        <circle cx="440" cy="120" r="5" fill="#E04F3E"/>
+                    </svg>
+                </div>
+
+                <!-- Key Stat Badges -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
+                    <div class="p-3 bg-paper rounded-xl border border-inkBorder">
+                        <span class="block font-mono font-bold text-lg text-ink">100+</span>
+                        <span class="text-[11px] text-inkLight">Länder beteiligt</span>
+                    </div>
+                    <div class="p-3 bg-paper rounded-xl border border-inkBorder">
+                        <span class="block font-mono font-bold text-lg text-ink">90.000+</span>
+                        <span class="text-[11px] text-inkLight">Vermittelte Paare</span>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1 p-3 bg-paper rounded-xl border border-inkBorder">
+                        <span class="block font-mono font-bold text-lg text-emeraldSuccess">Globale Wirkung</span>
+                        <span class="text-[11px] text-inkLight">Spaltung überwinden</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conclusion Note -->
+            <div class="max-w-2xl mx-auto text-center space-y-4 pt-6">
+                <p class="font-serif italic text-xl text-ink leading-relaxed">
+                    „Persönliche Begegnungen schaffen keine inhaltliche Konsenspflicht – aber sie stellen den menschlichen Anstand und das gegenseitige Zutrauen wieder her.“
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             KAPITEL 7: METHODISCHER ANHANG (COLLAPSIBLE)
+             ========================================== -->
+        <section id="kapitel-7" class="scroll-mt-16 pt-12 border-t-2 border-dashed border-inkBorder">
+            
+            <!-- Accordion Toggle Header Button -->
+            <div class="editorial-card p-6 bg-paper hover:bg-white transition-colors cursor-pointer border-2 border-inkBorder rounded-2xl shadow-sm" onclick="toggleAppendix()">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-emeraldSuccess/20 text-emeraldSuccess font-mono font-bold flex items-center justify-center text-sm">
+                            7
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-emeraldSuccess">Wissenschaftlicher Anhang</span>
+                            <h3 class="font-serif text-xl sm:text-2xl font-bold text-ink">Methodischer Anhang & Ökonometrie</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-3">
+                        <span class="hidden sm:inline-block text-xs font-mono text-inkLight">Klick zum Aufklappen</span>
+                        <div id="appendix-chevron" class="w-8 h-8 rounded-full bg-white border border-inkBorder flex items-center justify-center transition-transform duration-300">
+                            <svg class="w-5 h-5 text-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Collapsible Body Content -->
+            <div id="appendix-body" class="hidden mt-8 space-y-12 transition-all">
+                
+                <!-- 1. Flowchart Quasi-Experiment (First-Accepter Design) -->
+                <div class="editorial-card p-6 bg-white border border-inkBorder space-y-6">
+                    <h4 class="font-serif font-bold text-lg text-ink">1. Das Quasi-Experiment: First-Accepter-Design (Flowchart)</h4>
+                    <p class="text-xs text-inkLight leading-relaxed">
+                        Um Selektionsverzerrung zu eliminieren, werteten die Autoren ausschließlich Erst-Zustimmende (<em>First Accepters</em>) aus. Da die Kontrollgruppe erst durch die zufällige Absage oder Trägheit des Zweitpartners entstand, wiesen beide Gruppen exakt die gleiche initiale Teilnahmemotivation auf.
+                    </p>
+
+                    <!-- 2D SVG Flowchart -->
+                    <div class="w-full overflow-x-auto py-4">
+                        <svg class="min-w-[650px] w-full h-auto" viewBox="0 0 700 320">
+                            <!-- Step 1: Registered -->
+                            <rect x="20" y="130" width="130" height="60" rx="10" fill="#FAF8F4" stroke="#18181B" stroke-width="2"/>
+                            <text x="85" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="#18181B">19.141 Registrierte</text>
+                            <text x="85" y="175" text-anchor="middle" font-size="10" fill="#52525B">Baseline-Fragebogen</text>
+
+                            <!-- Arrow 1 -->
+                            <path d="M 150 160 L 190 160" stroke="#18181B" stroke-width="2" marker-end="url(#arrow)"/>
+
+                            <!-- Step 2: Algorithm Match -->
+                            <rect x="200" y="130" width="140" height="60" rx="10" fill="#FAF8F4" stroke="#18181B" stroke-width="2"/>
+                            <text x="270" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="#18181B">20-km-Matching</text>
+                            <text x="270" y="175" text-anchor="middle" font-size="10" fill="#52525B">8.573 CM / 10.344 LM</text>
+
+                            <!-- Arrow 2 -->
+                            <path d="M 340 160 L 380 160" stroke="#18181B" stroke-width="2"/>
+
+                            <!-- Step 3: First Accepter Filter -->
+                            <rect x="390" y="130" width="130" height="60" rx="10" fill="#F0F5FF" stroke="#2E6FD9" stroke-width="2"/>
+                            <text x="455" y="158" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E6FD9">First-Accepters</text>
+                            <text x="455" y="175" text-anchor="middle" font-size="10" fill="#18181B">100% Motivation</text>
+
+                            <!-- Branching Arrows -->
+                            <!-- Branch Top: Treatment -->
+                            <path d="M 520 160 L 550 160 L 550 70 L 570 70" stroke="#1E9E6E" stroke-width="2"/>
+                            <!-- Branch Bottom: Control -->
+                            <path d="M 520 160 L 550 160 L 550 250 L 570 250" stroke="#E04F3E" stroke-width="2"/>
+
+                            <!-- Treatment Box -->
+                            <rect x="570" y="40" width="120" height="60" rx="10" fill="#1E9E6E" opacity="0.15" stroke="#1E9E6E" stroke-width="2"/>
+                            <text x="630" y="68" text-anchor="middle" font-size="11" font-weight="bold" fill="#1E9E6E">Treatment (T = 1)</text>
+                            <text x="630" y="85" text-anchor="middle" font-size="10" fill="#18181B">2. Partner stimmt zu</text>
+
+                            <!-- Control Box -->
+                            <rect x="570" y="220" width="120" height="60" rx="10" fill="#E04F3E" opacity="0.15" stroke="#E04F3E" stroke-width="2"/>
+                            <text x="630" y="248" text-anchor="middle" font-size="11" font-weight="bold" fill="#E04F3E">Kontrolle (T = 0)</text>
+                            <text x="630" y="265" text-anchor="middle" font-size="10" fill="#18181B">2. Partner lehnt ab/inaktiv</text>
+                        </svg>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs font-mono">
+                        <div class="p-2 bg-paper rounded border border-inkBorder">LM Treatment: n = 514</div>
+                        <div class="p-2 bg-paper rounded border border-inkBorder">LM Kontrolle: n = 261</div>
+                        <div class="p-2 bg-paper rounded border border-inkBorder">CM Treatment: n = 455</div>
+                        <div class="p-2 bg-paper rounded border border-inkBorder">CM Kontrolle: n = 293</div>
+                    </div>
+                </div>
+
+                <!-- 2. Erhebungs-Zeitstrahl Timeline -->
+                <div class="editorial-card p-6 bg-white border border-inkBorder space-y-4">
+                    <h4 class="font-serif font-bold text-lg text-ink">2. Erhebungs-Zeitstrahl (2018)</h4>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 rounded-xl bg-paper border border-inkBorder space-y-1">
+                            <span class="text-xs font-mono font-bold text-lmLBlue">18. September 2018</span>
+                            <h5 class="font-serif font-bold text-sm text-ink">Baseline-Befragung</h5>
+                            <p class="text-xs text-inkLight">5.270 geantwortete Fragebögen vor dem Match-Stichtag.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-amberAccent/15 border border-amberAccent/40 space-y-1">
+                            <span class="text-xs font-mono font-bold text-ink">23. September 2018</span>
+                            <h5 class="font-serif font-bold text-sm text-ink">Offizieller Treffentag</h5>
+                            <p class="text-xs text-inkLight">89 % der Treffen an diesem Tag, 96 % im 4-Tage-Fenster.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-paper border border-inkBorder space-y-1">
+                            <span class="text-xs font-mono font-bold text-emeraldSuccess">01. Oktober 2018</span>
+                            <h5 class="font-serif font-bold text-sm text-ink">Endline-Befragung</h5>
+                            <p class="text-xs text-inkLight">4.247 Antworten 7 Tage nach den Treffen. Finales Panel: N = 1.523.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Econometric Specifications & Formulas -->
+                <div class="editorial-card p-6 bg-white border border-inkBorder space-y-6">
+                    <h4 class="font-serif font-bold text-lg text-ink">3. Ökonometrisches Modell & Balance-Tests</h4>
+
+                    <!-- Formula Box -->
+                    <div class="p-4 bg-paper rounded-xl border border-inkBorder overflow-x-auto text-center font-mono text-sm text-ink">
+                        Y<sub>i</sub> = &alpha; + &beta; T<sub>i</sub> + g(<strong>x</strong><sub>i</sub>) + &rho; Y<sub>i</sub><sup>b</sup> + &epsilon;<sub>i</sub>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-inkLight leading-relaxed">
+                        <div class="space-y-2">
+                            <h5 class="font-bold text-ink font-sans uppercase">Double Machine Learning (DML)</h5>
+                            <p>
+                                Anwendung des DML-Verfahrens nach <em>Chernozhukov et al. (2018)</em> mit Lasso-Selektion über 10-faches Cross-Fitting (25 Wiederholungen). Es wählt datengesteuert hochdimensionale Kontrollvariablen <strong>g(x<sub>i</sub>)</strong> aus, um bedingte Unabhängigkeit zu sichern.
+                            </p>
+                        </div>
+                        <div class="space-y-2">
+                            <h5 class="font-bold text-ink font-sans uppercase">Balance-Tests & Latent Class Analysis</h5>
+                            <p>
+                                F-Tests zur Vorhersage der Partnerzustimmung ergaben <strong>p = 0,390 (LM)</strong> und <strong>p = 0,331 (CM)</strong> bei einem Pseudo-R² &approx; 0,06. Die Reaktion des 2. Partners war somit empirisch ununterscheidbar vom Zufall.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Data Reference Table -->
+                <div class="editorial-card p-6 bg-white border border-inkBorder space-y-4">
+                    <h4 class="font-serif font-bold text-lg text-ink">4. Vollständige Daten-Referenztabelle (Hauptergebnisse)</h4>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="border-b border-inkBorder bg-paper text-ink font-bold font-mono">
+                                    <th class="p-2.5">Variable / Zielgröße</th>
+                                    <th class="p-2.5">Gleichgesinnte (LM)</th>
+                                    <th class="p-2.5">Andersdenkende (CM)</th>
+                                    <th class="p-2.5">Signifikanz (p-Wert)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-inkBorder text-inkLight">
+                                <tr>
+                                    <td class="p-2.5 font-medium text-ink">Ideologische Polarisierung Distanz Mitte</td>
+                                    <td class="p-2.5 font-mono text-lmLBlue font-bold">+0,161 SD</td>
+                                    <td class="p-2.5 font-mono text-ink">+0,005 SD</td>
+                                    <td class="p-2.5 font-mono">p &lt; 0,01 (LM) / p &gt; 0,10 (CM)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-medium text-ink">Affektive Polarisierung (Stereotypen)</td>
+                                    <td class="p-2.5 font-mono text-ink">+0,063 SD</td>
+                                    <td class="p-2.5 font-mono text-emeraldSuccess font-bold">−0,277 SD</td>
+                                    <td class="p-2.5 font-mono">p &lt; 0,01 (CM)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-medium text-ink">Kontaktbereitschaft (Willingness to engage)</td>
+                                    <td class="p-2.5 font-mono text-cmRed">−0,150 SD</td>
+                                    <td class="p-2.5 font-mono text-emeraldSuccess font-bold">+0,150 SD</td>
+                                    <td class="p-2.5 font-mono">p = 0,0545 (CM)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-medium text-ink">Gesellschaftlicher Zusammenhalt Index</td>
+                                    <td class="p-2.5 font-mono text-ink">+0,122 SD</td>
+                                    <td class="p-2.5 font-mono text-emeraldSuccess font-bold">+0,201 SD</td>
+                                    <td class="p-2.5 font-mono">p &lt; 0,01 (CM)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-medium text-ink">Gesprächsatmosphäre angenehm (%)</td>
+                                    <td class="p-2.5 font-mono">96 %</td>
+                                    <td class="p-2.5 font-mono">94 %</td>
+                                    <td class="p-2.5 font-mono">p = 0,026</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-medium text-ink">Durchschnittliche Dauer (Minuten)</td>
+                                    <td class="p-2.5 font-mono">133 Min.</td>
+                                    <td class="p-2.5 font-mono font-bold text-ink">148 Min. (+15 Min.)</td>
+                                    <td class="p-2.5 font-mono">p &lt; 0,001</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-inkBorder py-12 px-4 sm:px-8 text-center text-xs text-inkLight space-y-4">
+        <div class="max-w-4xl mx-auto space-y-2">
+            <p class="font-serif font-bold text-sm text-ink">Scrollytelling-Dokumentation „Deutschland spricht“</p>
+            <p>
+                Wissenschaftliche Primärquelle: Fang, X., Heuser, S., & Stötzer, L. (2025). <em>Can cross-party conversation reduce affective polarization? Evidence from a nationwide field experiment.</em> Journal of Public Economics.
+            </p>
+            <p class="text-[11px] opacity-75">
+                Konzipiert im modernen 2D-Editorial-Design (DIE ZEIT / The Pudding Stil). Reines Vanilla JS & SVG.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        /* ==========================================
+           1. GLOBAL STATE & DATA GLOSSARY
+           ========================================== */
+        const quizAnswers = {};
+        const questionsList = [
+            { id: 1, text: "Muslime & Nicht-Muslime", full: "Können Muslime und Nicht-Muslime in Deutschland zusammenleben?", percent: "52,2% diskutiert" },
+            { id: 2, text: "#MeToo Auswertung", full: "Hatte die öffentliche Debatte über sexuelle Belästigung und #MeToo positive Auswirkungen?", percent: "44,8% diskutiert" },
+            { id: 3, text: "Fleischsteuer", full: "Sollte Fleisch höher besteuert werden, um den Konsum zu senken?", percent: "48,1% diskutiert" },
+            { id: 4, text: "Autofreie Innenstädte", full: "Sollten deutsche Innenstädte autofrei werden?", percent: "52,3% diskutiert" },
+            { id: 5, text: "Grenzkontrollen", full: "Sollte Deutschland strengere Grenzkontrollen einführen?", percent: "53,1% diskutiert" },
+            { id: 6, text: "Wohlstandsentwicklung", full: "Geht es den Deutschen heute schlechter als vor 10 Jahren?", percent: "41,2% diskutiert" },
+            { id: 7, text: "US-Politik & Trump", full: "Ist Donald Trump gut für die USA?", percent: "39,5% diskutiert" }
+        ];
+
+        let seesawCurrentMode = 'LM';
+
+        /* ==========================================
+           2. INITIALIZATION ON LOAD
+           ========================================== */
+        window.addEventListener('DOMContentLoaded', () => {
+            initReadingProgressBar();
+            initDriftingHeroText();
+            initQuestionChips();
+            initGermanyMapSVG();
+            initScrollyObservers();
+            initBarometerSlider();
+        });
+
+        /* ==========================================
+           3. PROGRESS BAR & HERO DRIFT
+           ========================================== */
+        function initReadingProgressBar() {
+            window.addEventListener('scroll', () => {
+                const winScroll = document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height);
+                document.getElementById('progress-bar').style.transform = `scaleX(${scrolled})`;
+            });
+        }
+
+        function initDriftingHeroText() {
+            const leftEl = document.getElementById('drift-left');
+            const rightEl = document.getElementById('drift-right');
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                if (scrollY < 600) {
+                    const offset = scrollY * 0.25;
+                    leftEl.style.transform = `translateX(calc(-100% - ${offset}px))`;
+                    rightEl.style.transform = `translateX(${offset}px)`;
+                }
+            });
+        }
+
+        /* ==========================================
+           4. QUIZ WIDGET LOGIC (KAPITEL 1)
+           ========================================== */
+        function answerQuiz(qNum, choice) {
+            quizAnswers[qNum] = choice;
+            const currentQ = document.querySelector(`.quiz-q[data-q="${qNum}"]`);
+            currentQ.classList.add('hidden');
+
+            if (qNum < 4) {
+                const nextQ = document.querySelector(`.quiz-q[data-q="${qNum + 1}"]`);
+                nextQ.classList.remove('hidden');
+                document.getElementById('quiz-step-indicator').innerText = `Frage ${qNum + 1} von 4`;
+            } else {
+                document.getElementById('quiz-step-indicator').innerText = `Ergebnis`;
+                document.getElementById('quiz-result').classList.remove('hidden');
+            }
+        }
+
+        function challengeResponse(userAgreed) {
+            const feedbackEl = document.getElementById('challenge-feedback');
+            feedbackEl.classList.remove('hidden');
+            if (userAgreed) {
+                feedbackEl.innerText = "Mutig! Genau wie du haben 19.141 Deutsche reagiert – und überraschende Erfahrungen gemacht.";
+            } else {
+                feedbackEl.innerText = "Verständlich – viele hatten Bedenken. Doch 95% derjenigen, die sich trafen, erlebten ein sehr angenehmes Gespräch!";
+            }
+        }
+
+        /* ==========================================
+           5. CHAPTER 2 CHIPS & STICKY SCROLLEY SVG MAP
+           ========================================== */
+        function initQuestionChips() {
+            const container = document.getElementById('questions-chip-container');
+            questionsList.forEach((q, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `px-3 py-1.5 rounded-full text-xs font-semibold border transition-all ${idx === 0 ? 'bg-ink text-white border-ink' : 'bg-paper text-inkBorder hover:border-ink text-ink'}`;
+                btn.innerText = `${idx + 1}. ${q.text}`;
+                btn.onclick = () => selectChip(idx, btn);
+                container.appendChild(btn);
+            });
+            selectChip(0, container.children[0]);
+        }
+
+        function selectChip(index, btnEl) {
+            document.querySelectorAll('#questions-chip-container button').forEach(b => {
+                b.className = 'px-3 py-1.5 rounded-full text-xs font-semibold border bg-paper text-ink border-inkBorder hover:border-ink transition-all';
+            });
+            btnEl.className = 'px-3 py-1.5 rounded-full text-xs font-semibold border bg-ink text-white border-ink transition-all';
+            const q = questionsList[index];
+            document.getElementById('chip-detail').innerHTML = `<strong>Frage ${q.id}:</strong> „${q.full}“ — <span class="text-cmRed font-bold">${q.percent}</span>`;
+        }
+
+        function initGermanyMapSVG() {
+            const pointsGroup = document.getElementById('svg-map-points');
+            const linesGroup = document.getElementById('svg-map-lines');
+            const radiiGroup = document.getElementById('svg-map-radii');
+
+            // Generate ~40 random 2D points inside Germany bounding box
+            const points = [
+                {x: 230, y: 120}, {x: 250, y: 150}, {x: 180, y: 180}, {x: 310, y: 140},
+                {x: 350, y: 190}, {x: 280, y: 220}, {x: 220, y: 260}, {x: 160, y: 280},
+                {x: 380, y: 270}, {x: 320, y: 320}, {x: 240, y: 350}, {x: 190, y: 390},
+                {x: 290, y: 410}, {x: 340, y: 460}, {x: 260, y: 480}, {x: 210, y: 440}
+            ];
+
+            points.forEach((p, i) => {
+                const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                circle.setAttribute("cx", p.x);
+                circle.setAttribute("cy", p.y);
+                circle.setAttribute("r", 5);
+                circle.setAttribute("fill", i % 2 === 0 ? "#E04F3E" : "#2E6FD9");
+                pointsGroup.appendChild(circle);
+
+                // 20km radius circle
+                const radiusCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                radiusCircle.setAttribute("cx", p.x);
+                radiusCircle.setAttribute("cy", p.y);
+                radiusCircle.setAttribute("r", 35);
+                radiusCircle.setAttribute("fill", "none");
+                radiusCircle.setAttribute("stroke", "#E59A2B");
+                radiusCircle.setAttribute("stroke-width", "1.5");
+                radiusCircle.setAttribute("stroke-dasharray", "3,3");
+                radiiGroup.appendChild(radiusCircle);
+            });
+
+            // Lines
+            for (let i = 0; i < points.length - 1; i += 2) {
+                const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                line.setAttribute("x1", points[i].x);
+                line.setAttribute("y1", points[i].y);
+                line.setAttribute("x2", points[i+1].x);
+                line.setAttribute("y2", points[i+1].y);
+                line.setAttribute("stroke", i % 4 === 0 ? "#E04F3E" : "#2E6FD9");
+                line.setAttribute("stroke-width", "2");
+                line.setAttribute("opacity", "0");
+                line.classList.add("map-connection-line");
+                linesGroup.appendChild(line);
+            }
+        }
+
+        function setScrollyStep(stepNum) {
+            const mapSvg = document.getElementById('svg-map');
+            const sankeySvg = document.getElementById('svg-sankey');
+            const visTitle = document.getElementById('vis-title');
+            const visCaption = document.getElementById('vis-caption');
+            const radiiGroup = document.getElementById('svg-map-radii');
+            const lines = document.querySelectorAll('.map-connection-line');
+
+            if (stepNum === 1) {
+                mapSvg.classList.remove('hidden');
+                sankeySvg.classList.add('hidden');
+                radiiGroup.style.opacity = '0';
+                lines.forEach(l => l.setAttribute('opacity', '0'));
+                visTitle.innerText = "1. Deutschlandkarte: 19.141 Teilnehmende";
+                visCaption.innerText = "Verteilung der registrierten Bürgerinnen und Bürger über das gesamte Bundesgebiet.";
+            } else if (stepNum === 2) {
+                mapSvg.classList.remove('hidden');
+                sankeySvg.classList.add('hidden');
+                radiiGroup.style.opacity = '1';
+                lines.forEach(l => l.setAttribute('opacity', '0.8'));
+                visTitle.innerText = "2. Die 20-km-Radius Einschränkung";
+                visCaption.innerText = "Rote und blaue Verbindungslinien zeigen gematchte Partner innerhalb des 20-km-Umkreises.";
+            } else if (stepNum === 3) {
+                mapSvg.classList.add('hidden');
+                sankeySvg.classList.remove('hidden');
+                visTitle.innerText = "3. Zuteilungs-Trichter (Sankey)";
+                visCaption.innerText = "Aufteilung in 8.573 gegensätzliche (CM) und 10.344 ähnliche (LM) Paare.";
+            }
+        }
+
+        function initScrollyObservers() {
+            const observerOptions = { root: null, threshold: 0.6 };
+
+            const stepObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.id === 'step-1') setScrollyStep(1);
+                        if (entry.target.id === 'step-2') setScrollyStep(2);
+                        if (entry.target.id === 'step-3') setScrollyStep(3);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.scrolly-step').forEach(el => stepObserver.observe(el));
+        }
+
+        /* ==========================================
+           6. SEESAW WIDGET LOGIC (KAPITEL 3)
+           ========================================== */
+        function setSeesawMode(mode) {
+            seesawCurrentMode = mode;
+            const lmBtn = document.getElementById('mode-lm-btn');
+            const cmBtn = document.getElementById('mode-cm-btn');
+            const leftBody = document.getElementById('avatar-left-body');
+            const rightBody = document.getElementById('avatar-right-body');
+            const markerL = document.getElementById('marker-left');
+            const markerR = document.getElementById('marker-right');
+            const banner = document.getElementById('seesaw-status-banner');
+
+            if (mode === 'LM') {
+                lmBtn.className = 'px-4 py-2 text-xs font-bold rounded-xl border border-lmLBlue bg-lmLBlue text-white transition-all shadow-sm';
+                cmBtn.className = 'px-4 py-2 text-xs font-bold rounded-xl border border-inkBorder bg-paper text-ink hover:border-cmRed transition-all';
+                leftBody.setAttribute('fill', '#2E6FD9');
+                rightBody.setAttribute('fill', '#2E6FD9');
+                markerL.style.left = '35%';
+                markerR.style.left = '45%';
+                markerL.style.backgroundColor = '#2E6FD9';
+                markerR.style.backgroundColor = '#2E6FD9';
+                banner.innerText = "Modus: Gleichgesinnte (LM) geladen. Klicke auf Simulation.";
+            } else {
+                cmBtn.className = 'px-4 py-2 text-xs font-bold rounded-xl border border-cmRed bg-cmRed text-white transition-all shadow-sm';
+                lmBtn.className = 'px-4 py-2 text-xs font-bold rounded-xl border border-inkBorder bg-paper text-ink hover:border-lmLBlue transition-all';
+                leftBody.setAttribute('fill', '#2E6FD9');
+                rightBody.setAttribute('fill', '#E04F3E');
+                markerL.style.left = '25%';
+                markerR.style.left = '75%';
+                markerL.style.backgroundColor = '#2E6FD9';
+                markerR.style.backgroundColor = '#E04F3E';
+                banner.innerText = "Modus: Andersdenkende (CM) geladen. Klicke auf Simulation.";
+            }
+        }
+
+        function playSeesawAnimation() {
+            const markerL = document.getElementById('marker-left');
+            const markerR = document.getElementById('marker-right');
+            const banner = document.getElementById('seesaw-status-banner');
+
+            if (seesawCurrentMode === 'LM') {
+                markerL.style.left = '18%'; // Drifting outwards to edge
+                markerR.style.left = '82%';
+                banner.innerHTML = "<span class='text-lmLBlue font-bold'>Echokammer-Effekt (+16% SD):</span> Beide Meinungen drifteten weiter an die Ränder!";
+            } else {
+                // Bounce slightly but remain at positions
+                markerL.style.transform = 'translate(-50%, -50%) scale(1.3)';
+                markerR.style.transform = 'translate(-50%, -50%) scale(1.3)';
+                setTimeout(() => {
+                    markerL.style.transform = 'translate(-50%, -50%) scale(1)';
+                    markerR.style.transform = 'translate(-50%, -50%) scale(1)';
+                }, 400);
+                banner.innerHTML = "<span class='text-cmRed font-bold'>Null-Effekt (+0,5% SD):</span> Meinungen blieben exakt stabil. Kein Trotzeffekt!";
+            }
+        }
+
+        /* ==========================================
+           7. BAROMETER SLIDER LOGIC (KAPITEL 4)
+           ========================================== */
+        function initBarometerSlider() {
+            const slider = document.getElementById('barometer-slider');
+            slider.addEventListener('input', (e) => {
+                const val = parseInt(e.target.value);
+                updateBarometerUI(val);
+            });
+        }
+
+        function updateBarometerUI(val) {
+            const badge = document.getElementById('barometer-percentage-badge');
+            const metric = document.getElementById('metric-decrease');
+            const subtext = document.getElementById('metric-subtext');
+            const figBody = document.getElementById('fig-body');
+            const figHead = document.getElementById('fig-head');
+            const figSmile = document.getElementById('fig-smile');
+            const figLabel = document.getElementById('fig-label');
+
+            const tag1 = document.getElementById('tag-1');
+            const tag2 = document.getElementById('tag-2');
+            const tag3 = document.getElementById('tag-3');
+            const tag4 = document.getElementById('tag-4');
+
+            badge.innerText = `Gesprächsverlauf: ${val}%`;
+            
+            // Calculate metric reduction: up to 27.7%
+            const currentRed = (val * 0.277).toFixed(1);
+            metric.innerText = `−${currentRed} %`;
+
+            // Fading speech bubbles
+            const opacity = (1 - val / 100).toFixed(2);
+            const scale = (1 - val / 300).toFixed(2);
+            [tag1, tag2, tag3, tag4].forEach(tag => {
+                tag.style.opacity = opacity;
+                tag.style.transform = `scale(${scale})`;
+            });
+
+            // Figure color transition from zinc (#27272A) to warm emerald (#1E9E6E)
+            if (val > 60) {
+                figBody.setAttribute('fill', '#1E9E6E');
+                figHead.setAttribute('fill', '#1E9E6E');
+                figSmile.setAttribute('opacity', '1');
+                figLabel.innerText = "Menschlicher Gesprächspartner";
+                subtext.innerText = "Vorurteile bezüglich Moral und kognitiven Fähigkeiten schrumpften drastisch.";
+            } else {
+                figBody.setAttribute('fill', '#27272A');
+                figHead.setAttribute('fill', '#27272A');
+                figSmile.setAttribute('opacity', '0');
+                figLabel.innerText = "Abstrakter „politischer Gegner“";
+                subtext.innerText = "Vorurteile gegenüber dem politischen Gegner sind in der Ausgangslage stark.";
+            }
+        }
+
+        /* ==========================================
+           8. CLOCK ANIMATION (KAPITEL 5)
+           ========================================== */
+        function animateClock() {
+            const minuteHand = document.getElementById('clock-minute-hand');
+            const hourHand = document.getElementById('clock-hour-hand');
+            
+            minuteHand.style.transform = 'rotate(720deg)';
+            hourHand.style.transform = 'rotate(70deg)';
+
+            setTimeout(() => {
+                minuteHand.style.transform = 'rotate(0deg)';
+                hourHand.style.transform = 'rotate(0deg)';
+            }, 1500);
+        }
+
+        /* ==========================================
+           9. APPENDIX COLLAPSIBLE TOGGLE (KAPITEL 7)
+           ========================================== */
+        function toggleAppendix() {
+            const body = document.getElementById('appendix-body');
+            const chevron = document.getElementById('appendix-chevron');
+            
+            if (body.classList.contains('hidden')) {
+                body.classList.remove('hidden');
+                chevron.style.transform = 'rotate(180deg)';
+            } else {
+                body.classList.add('hidden');
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
